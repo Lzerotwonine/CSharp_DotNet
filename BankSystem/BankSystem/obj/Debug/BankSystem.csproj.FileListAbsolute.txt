@@ -1,0 +1,23 @@
+C:\Users\Long\source\repos\BankSystem\BankSystem\obj\Debug\BankSystem.csproj.AssemblyReference.cache
+C:\Users\Long\source\repos\BankSystem\BankSystem\obj\Debug\BankSystem.Properties.Resources.resources
+C:\Users\Long\source\repos\BankSystem\BankSystem\obj\Debug\BankSystem.View.BranchForm.resources
+C:\Users\Long\source\repos\BankSystem\BankSystem\obj\Debug\BankSystem.View.CustomerForm.resources
+C:\Users\Long\source\repos\BankSystem\BankSystem\obj\Debug\BankSystem.View.EmployeeForm.resources
+C:\Users\Long\source\repos\BankSystem\BankSystem\obj\Debug\BankSystem.View.Login.resources
+C:\Users\Long\source\repos\BankSystem\BankSystem\obj\Debug\BankSystem.View.MainMenu.resources
+C:\Users\Long\source\repos\BankSystem\BankSystem\obj\Debug\BankSystem.csproj.GenerateResource.cache
+C:\Users\Long\source\repos\BankSystem\BankSystem\obj\Debug\BankSystem.csproj.CoreCompileInputs.cache
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.csproj.AssemblyReference.cache
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.Properties.Resources.resources
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.View.BranchForm.resources
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.View.CustomerForm.resources
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.View.EmployeeForm.resources
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.View.Login.resources
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.View.MainMenu.resources
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.csproj.GenerateResource.cache
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.csproj.CoreCompileInputs.cache
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\BankSystem.exe.config
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\BankSystem.exe
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\BankSystem.pdb
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.exe
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.pdb
