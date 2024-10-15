@@ -1,4 +1,4 @@
-﻿
+
 using BankSystem.Controller;
 using BankSystem.Model;
 using System;
@@ -23,9 +23,26 @@ namespace BankSystem.View
         private void InitializeDataGridView()
         {
             dataGridViewEmployees.AutoGenerateColumns = false;
-            dataGridViewEmployees.Columns.Add("Id", "ID");
-            dataGridViewEmployees.Columns.Add("Name", "Name");
-            dataGridViewEmployees.Columns.Add("Role", "Role");
+
+            DataGridViewTextBoxColumn idColumn = new DataGridViewTextBoxColumn();
+            idColumn.HeaderText = "ID";
+            idColumn.DataPropertyName = "Id";
+            dataGridViewEmployees.Columns.Add(idColumn);
+
+            DataGridViewTextBoxColumn nameColumn = new DataGridViewTextBoxColumn();
+            nameColumn.HeaderText = "Name";
+            nameColumn.DataPropertyName = "Name";
+            dataGridViewEmployees.Columns.Add(nameColumn);
+
+            DataGridViewTextBoxColumn passwordColumn = new DataGridViewTextBoxColumn();
+            passwordColumn.HeaderText = "Password";
+            passwordColumn.DataPropertyName = "Password";
+            dataGridViewEmployees.Columns.Add(passwordColumn);
+
+            DataGridViewTextBoxColumn roleColumn = new DataGridViewTextBoxColumn();
+            roleColumn.HeaderText = "Role";
+            roleColumn.DataPropertyName = "Role";
+            dataGridViewEmployees.Columns.Add(roleColumn);
         }
 
         // Load danh sách nhân viên từ CSDL
@@ -49,7 +66,7 @@ namespace BankSystem.View
                 Id = textBoxId.Text,
                 Name = textBoxName.Text,
                 Password = textBoxPassword.Text,
-                Role = checkBoxAdmin.Checked ? "Admin" : "Employee"
+                Role = checkBoxAdmin.Checked ? "Admin" : "User"
             };
 
             if (employeeController.Create(employee))
@@ -74,7 +91,7 @@ namespace BankSystem.View
                 employee.Id = textBoxId.Text;
                 employee.Name = textBoxName.Text;
                 employee.Password = textBoxPassword.Text;
-                employee.Role = checkBoxAdmin.Checked ? "Admin" : "Employee";
+                employee.Role = checkBoxAdmin.Checked ? "Admin" : "User";
 
                 if (employeeController.Update(employee))
                 {
@@ -102,8 +119,7 @@ namespace BankSystem.View
 
                 if (employeeController.Delete(employee.Id))
                 {
-                    LoadEmployeesFromDatabase();
-                    MessageBox.Show("Đã xoá Nhân viên thành công.");
+                    ConfirmDelete();
                 }
                 else
                 {
@@ -113,6 +129,16 @@ namespace BankSystem.View
             else
             {
                 MessageBox.Show("Chưa chọn Nhân viên để xoá.");
+            }
+        }
+
+        private void ConfirmDelete()
+        {
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xoá?", "Xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                LoadEmployeesFromDatabase();
+                MessageBox.Show("Đã xoá Nhân viên thành công.");
             }
         }
 
@@ -126,8 +152,35 @@ namespace BankSystem.View
                 textBoxId.Text = employee.Id;
                 textBoxName.Text = employee.Name;
                 textBoxPassword.Text = employee.Password;
-                checkBoxAdmin.Checked = employee.Role == "Admin";
+
+                if (employee.Role == "Admin")
+                {
+                    checkBoxAdmin.Checked = true;
+                    checkBoxUser.Checked = false;
+                }
+                else if (employee.Role == "User")
+                {
+                    checkBoxAdmin.Checked = false;
+                    checkBoxUser.Checked = true;
+                }
             }
         }
+
+        private void checkBoxAdmin_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxAdmin.Checked)
+            {
+                checkBoxUser.Checked = false;
+            }
+        }
+
+        private void checkBoxUser_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxUser.Checked)
+            {
+                checkBoxAdmin.Checked = false;
+            }
+        }
+
     }
 }
