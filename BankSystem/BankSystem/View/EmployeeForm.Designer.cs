@@ -225,6 +225,7 @@ namespace BankSystem.View
             this.Controls.Add(this.groupBoxEmployeeDetails);
             this.Controls.Add(this.panelButtons);
             this.Controls.Add(this.dataGridViewEmployees);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "EmployeeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý nhân viên";
