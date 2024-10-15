@@ -1,4 +1,4 @@
-﻿using System.Drawing;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace BankSystem.View
@@ -59,6 +59,8 @@ namespace BankSystem.View
             this.textBoxId.Name = "textBoxId";
             this.textBoxId.Size = new System.Drawing.Size(200, 22);
             this.textBoxId.TabIndex = 1;
+            this.textBoxId.TextChanged += textBoxId_TextChanged;
+            this.textBoxId.KeyDown += textBoxPassword_KeyDown;
             // 
             // labelPassword
             // 
@@ -75,6 +77,8 @@ namespace BankSystem.View
             this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(200, 22);
             this.textBoxPassword.TabIndex = 2;
+            this.textBoxPassword.TextChanged += textBoxPassword_TextChanged;
+            this.textBoxPassword.KeyDown += textBoxPassword_KeyDown;
             // 
             // buttonLogin
             // 
@@ -83,6 +87,7 @@ namespace BankSystem.View
             this.buttonLogin.Size = new System.Drawing.Size(100, 30);
             this.buttonLogin.TabIndex = 3;
             this.buttonLogin.Text = "Đăng nhập";
+            this.buttonLogin.Click += buttonLogin_Click;
             // 
             // buttonExit
             // 
@@ -91,6 +96,7 @@ namespace BankSystem.View
             this.buttonExit.Size = new System.Drawing.Size(100, 30);
             this.buttonExit.TabIndex = 4;
             this.buttonExit.Text = "Thoát";
+            this.buttonExit.Click += buttonExit_Click;
             // 
             // titleMain
             // 
