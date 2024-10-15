@@ -1,4 +1,4 @@
-﻿using BankSystem.Controller;
+using BankSystem.Controller;
 using BankSystem.Model;
 using System;
 using System.Data;
@@ -184,6 +184,16 @@ namespace BankSystem.View
             {
                 checkBoxAdmin.Checked = false;
             }
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
     }
