@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 
 namespace BankSystem.View
@@ -9,8 +9,8 @@ namespace BankSystem.View
 		{
 			InitializeComponent();
 			this.IsMdiContainer = true;
-			// Add label form behind this container
-		}
+            this.KeyPreview = true;
+        }
 
 		// Event handler for Login menu item
 		private void loginMenuItem_Click(object sender, EventArgs e)
