@@ -138,6 +138,7 @@ namespace BankSystem.View
             this.Controls.Add(this.titleSub);
             this.Controls.Add(this.groupBoxLogin);
             this.Controls.Add(this.panelButtons);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng nhập";
