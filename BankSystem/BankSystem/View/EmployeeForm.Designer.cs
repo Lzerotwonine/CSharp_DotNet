@@ -1,4 +1,4 @@
-﻿namespace BankSystem.View
+namespace BankSystem.View
 {
     partial class EmployeeForm
     {
@@ -18,13 +18,13 @@
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.CheckBox checkBoxAdmin;
-        private System.Windows.Forms.CheckBox checkBoxEmployee;
+        private System.Windows.Forms.CheckBox checkBoxUser;
 
         private void InitializeComponent()
         {
             this.groupBoxEmployeeDetails = new System.Windows.Forms.GroupBox();
             this.checkBoxAdmin = new System.Windows.Forms.CheckBox();
-            this.checkBoxEmployee = new System.Windows.Forms.CheckBox();
+            this.checkBoxUser = new System.Windows.Forms.CheckBox();
             this.labelId = new System.Windows.Forms.Label();
             this.textBoxId = new System.Windows.Forms.TextBox();
             this.labelName = new System.Windows.Forms.Label();
@@ -47,7 +47,7 @@
             // groupBoxEmployeeDetails
             // 
             this.groupBoxEmployeeDetails.Controls.Add(this.checkBoxAdmin);
-            this.groupBoxEmployeeDetails.Controls.Add(this.checkBoxEmployee);
+            this.groupBoxEmployeeDetails.Controls.Add(this.checkBoxUser);
             this.groupBoxEmployeeDetails.Controls.Add(this.labelId);
             this.groupBoxEmployeeDetails.Controls.Add(this.textBoxId);
             this.groupBoxEmployeeDetails.Controls.Add(this.labelName);
@@ -70,15 +70,17 @@
             this.checkBoxAdmin.TabIndex = 7;
             this.checkBoxAdmin.Text = "Admin";
             this.checkBoxAdmin.UseVisualStyleBackColor = true;
+            this.checkBoxAdmin.CheckedChanged += new System.EventHandler(this.checkBoxAdmin_CheckedChanged);
             // 
-            // checkBoxEmployee
+            // checkBoxUser
             // 
-            this.checkBoxEmployee.Location = new System.Drawing.Point(260, 127);
-            this.checkBoxEmployee.Name = "checkBoxEmployee";
-            this.checkBoxEmployee.Size = new System.Drawing.Size(100, 24);
-            this.checkBoxEmployee.TabIndex = 8;
-            this.checkBoxEmployee.Text = "Employee";
-            this.checkBoxEmployee.UseVisualStyleBackColor = true;
+            this.checkBoxUser.Location = new System.Drawing.Point(260, 127);
+            this.checkBoxUser.Name = "checkBoxUser";
+            this.checkBoxUser.Size = new System.Drawing.Size(100, 24);
+            this.checkBoxUser.TabIndex = 8;
+            this.checkBoxUser.Text = "User";
+            this.checkBoxUser.UseVisualStyleBackColor = true;
+            this.checkBoxUser.CheckedChanged += new System.EventHandler(this.checkBoxUser_CheckedChanged);
             // 
             // labelId
             // 
@@ -215,6 +217,7 @@
             this.Controls.Add(this.panelButtons);
             this.Controls.Add(this.dataGridViewEmployees);
             this.Name = "EmployeeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý nhân viên";
             this.groupBoxEmployeeDetails.ResumeLayout(false);
             this.groupBoxEmployeeDetails.PerformLayout();
