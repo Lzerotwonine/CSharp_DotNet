@@ -153,7 +153,7 @@ namespace BankSystem.View
                 textBoxName.Text = employee.Name;
 
                 // Disable password editing
-                textBoxPassword.Text = "********"; // You can hide the real password
+                textBoxPassword.Text = employee.Password;
                 textBoxPassword.ReadOnly = true;
 
                 if (employee.Role == "Admin")
