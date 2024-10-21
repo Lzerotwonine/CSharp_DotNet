@@ -1,0 +1,152 @@
+﻿using BankSystem.Controller;
+using BankSystem.Model;
+using System;
+using System.Linq;
+using System.Windows.Forms;
+
+namespace BankSystem.View
+{
+    public partial class AccountForm : Form, IView
+    {
+        private AccountController controller;
+        private AccountModel currentAccount;
+
+        public AccountForm()
+        {
+            InitializeComponent();
+            controller = new AccountController();
+            InitializeDataGridView();
+            LoadAccountsFromDatabase();
+        }
+
+        // Khởi tạo DataGridView
+        private void InitializeDataGridView()
+        {
+            dataGridViewAccounts.AutoGenerateColumns = false;
+
+            DataGridViewTextBoxColumn accountIdColumn = new DataGridViewTextBoxColumn();
+            accountIdColumn.HeaderText = "Account ID";
+            accountIdColumn.DataPropertyName = "Id";
+            dataGridViewAccounts.Columns.Add(accountIdColumn);
+
+            DataGridViewTextBoxColumn customerIdColumn = new DataGridViewTextBoxColumn();
+            customerIdColumn.HeaderText = "Customer ID";
+            customerIdColumn.DataPropertyName = "CustomerId";
+            dataGridViewAccounts.Columns.Add(customerIdColumn);
+
+            DataGridViewTextBoxColumn dateOpenedColumn = new DataGridViewTextBoxColumn();
+            dateOpenedColumn.HeaderText = "Date Opened";
+            dateOpenedColumn.DataPropertyName = "DateOpened";
+            dataGridViewAccounts.Columns.Add(dateOpenedColumn);
+
+            DataGridViewTextBoxColumn balanceColumn = new DataGridViewTextBoxColumn();
+            balanceColumn.HeaderText = "Balance";
+            balanceColumn.DataPropertyName = "Balance";
+            dataGridViewAccounts.Columns.Add(balanceColumn);
+        }
+
+        // Load danh sách tài khoản từ cơ sở dữ liệu
+        private void LoadAccountsFromDatabase()
+        {
+            controller.Load();
+            var accounts = controller.Items.Cast<AccountModel>().ToList();
+            dataGridViewAccounts.DataSource = accounts;
+        }
+
+        // Lấy dữ liệu từ form
+        public void GetDataFromText()
+        {
+            if (currentAccount == null) currentAccount = new AccountModel();
+
+            currentAccount.Id = int.Parse(textBoxAccountId.Text);
+            currentAccount.CustomerId = textBoxCustomerId.Text;
+            currentAccount.DateOpened = dateTimePickerDateOpened.Value;
+            currentAccount.Balance = float.Parse(textBoxBalance.Text);
+        }
+
+        // Đưa dữ liệu lên form
+        public void SetDataToText(object item)
+        {
+            var account = item as AccountModel;
+            if (account != null)
+            {
+                textBoxAccountId.Text = account.Id.ToString();
+                textBoxCustomerId.Text = account.CustomerId;
+                dateTimePickerDateOpened.Value = account.DateOpened;
+                textBoxBalance.Text = account.Balance.ToString();
+            }
+        }
+
+        // Xóa tài khoản
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            var selectedRow = dataGridViewAccounts.SelectedRows.Cast<DataGridViewRow>().FirstOrDefault();
+            if (selectedRow != null)
+            {
+                AccountModel account = selectedRow.DataBoundItem as AccountModel;
+
+                if (controller.Delete(account.Id))
+                {
+                    ConfirmDelete();
+                }
+                else
+                {
+                    MessageBox.Show("Không thể xoá tài khoản.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Chưa chọn tài khoản để xoá.");
+            }
+        }
+
+        // Hiển thị xác nhận trước khi xoá
+        private void ConfirmDelete()
+        {
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xoá tài khoản?", "Xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                LoadAccountsFromDatabase();
+                MessageBox.Show("Đã xoá tài khoản thành công.");
+            }
+        }
+
+        // Thêm hoặc cập nhật tài khoản
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            GetDataFromText();
+            if (controller.IsExist(currentAccount.Id))
+            {
+                controller.Update(currentAccount);
+                MessageBox.Show("Cập nhật tài khoản thành công.");
+            }
+            else
+            {
+                controller.Create(currentAccount);
+                MessageBox.Show("Đã thêm tài khoản thành công.");
+            }
+            LoadAccountsFromDatabase();
+            ClearForm();
+        }
+
+        // Hiển thị thông tin tài khoản khi chọn trong DataGridView
+        private void dataGridViewAccounts_SelectionChanged(object sender, EventArgs e)
+        {
+            var selectedRow = dataGridViewAccounts.SelectedRows.Cast<DataGridViewRow>().FirstOrDefault();
+            if (selectedRow != null)
+            {
+                var account = (AccountModel)selectedRow.DataBoundItem;
+                SetDataToText(account);
+            }
+        }
+
+        // Xoá dữ liệu form
+        private void ClearForm()
+        {
+            textBoxAccountId.Clear();
+            textBoxCustomerId.Clear();
+            dateTimePickerDateOpened.Value = DateTime.Now;
+            textBoxBalance.Clear();
+        }
+    }
+}
