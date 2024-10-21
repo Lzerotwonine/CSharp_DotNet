@@ -1,4 +1,4 @@
-﻿using System.Drawing;
+using System.Drawing;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -26,8 +26,9 @@ namespace BankSystem.View
 		private System.Windows.Forms.ToolStripMenuItem helpMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem userGuideMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem aboutMenuItem;
+        private System.Windows.Forms.Label userLabel;
 
-		private void InitializeComponent()
+        private void InitializeComponent()
 		{
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +49,7 @@ namespace BankSystem.View
             this.helpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userGuideMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userLabel = new System.Windows.Forms.Label();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,20 +80,23 @@ namespace BankSystem.View
             // loginMenuItem
             // 
             this.loginMenuItem.Name = "loginMenuItem";
-            this.loginMenuItem.Size = new System.Drawing.Size(139, 26);
+            this.loginMenuItem.Size = new System.Drawing.Size(224, 26);
             this.loginMenuItem.Text = "Login";
+            this.loginMenuItem.Click += new System.EventHandler(this.loginMenuItem_Click);
             // 
             // logoutMenuItem
             // 
             this.logoutMenuItem.Name = "logoutMenuItem";
-            this.logoutMenuItem.Size = new System.Drawing.Size(139, 26);
+            this.logoutMenuItem.Size = new System.Drawing.Size(224, 26);
             this.logoutMenuItem.Text = "Logout";
+            this.logoutMenuItem.Click += new System.EventHandler(this.logoutMenuItem_Click);
             // 
             // exitMenuItem
             // 
             this.exitMenuItem.Name = "exitMenuItem";
-            this.exitMenuItem.Size = new System.Drawing.Size(139, 26);
+            this.exitMenuItem.Size = new System.Drawing.Size(224, 26);
             this.exitMenuItem.Text = "Exit";
+            this.exitMenuItem.Click += new System.EventHandler(this.exitMenuItem_Click);
             // 
             // systemMenuItem
             // 
@@ -105,14 +110,16 @@ namespace BankSystem.View
             // employeeMenuItem
             // 
             this.employeeMenuItem.Name = "employeeMenuItem";
-            this.employeeMenuItem.Size = new System.Drawing.Size(158, 26);
+            this.employeeMenuItem.Size = new System.Drawing.Size(224, 26);
             this.employeeMenuItem.Text = "Employee";
+            this.employeeMenuItem.Click += new System.EventHandler(this.employeeMenuItem_Click);
             // 
             // branchMenuItem
             // 
             this.branchMenuItem.Name = "branchMenuItem";
-            this.branchMenuItem.Size = new System.Drawing.Size(158, 26);
+            this.branchMenuItem.Size = new System.Drawing.Size(224, 26);
             this.branchMenuItem.Text = "Branch";
+            this.branchMenuItem.Click += new System.EventHandler(this.branchMenuItem_Click);
             // 
             // bankingMenuItem
             // 
@@ -191,11 +198,21 @@ namespace BankSystem.View
             this.aboutMenuItem.Size = new System.Drawing.Size(164, 26);
             this.aboutMenuItem.Text = "About";
             // 
+            // userLabel
+            // 
+            this.userLabel.AutoSize = true;
+            this.userLabel.Location = new System.Drawing.Point(700, 10);
+            this.userLabel.Name = "userLabel";
+            this.userLabel.Size = new System.Drawing.Size(0, 16);
+            this.userLabel.TabIndex = 0;
+            this.userLabel.Visible = false;
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(960, 640);
+            this.Controls.Add(this.userLabel);
             this.Controls.Add(this.menuStrip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
@@ -206,7 +223,6 @@ namespace BankSystem.View
             this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
 		}
 	}
 }
