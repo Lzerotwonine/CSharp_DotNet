@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 using BankSystem.Controller; // Nhớ thêm namespace của LoginController
 
@@ -6,7 +6,10 @@ namespace BankSystem.View
 {
     public partial class Login : Form
     {
-        private LoginController loginController; // Khai báo đối tượng LoginController
+        private LoginController loginController;
+        public bool IsAuthenticated { get; private set; } = false;
+        public string AuthenticatedUserId { get; private set; }
+        public string AuthenticatedUserRole { get; private set; }
 
         public Login()
         {
@@ -37,35 +40,19 @@ namespace BankSystem.View
                 return;
             }
 
-            MainMenu mainMenu = (MainMenu)this.MdiParent;
-
-            // Gọi phương thức xác thực từ LoginController
             if (loginController.Authenticate(id, password))
             {
-                // Lấy role từ Employee và kiểm tra
+                // Đăng nhập thành công, lấy thông tin user
                 var employee = loginController.GetEmployeeById(id);
-
-                if (employee != null && employee.Role == "Admin")
-                {
-                    EmployeeForm employeeForm = new EmployeeForm();
-                    employeeForm.MdiParent = mainMenu;
-                    employeeForm.StartPosition = FormStartPosition.CenterScreen;
-                    employeeForm.Show();
-                }
-                else if (employee != null && employee.Role == "User")
-                {
-                    CustomerForm customerForm = new CustomerForm();
-                    customerForm.MdiParent = mainMenu;
-                    customerForm.StartPosition = FormStartPosition.CenterScreen;
-                    customerForm.Show();
-                }
+                AuthenticatedUserId = employee.Id;
+                AuthenticatedUserRole = employee.Role;
+                IsAuthenticated = true;
 
                 this.Close(); // Đóng form đăng nhập
             }
             else
             {
                 MessageBox.Show("ID hoặc mật khẩu không đúng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
             }
         }
 
