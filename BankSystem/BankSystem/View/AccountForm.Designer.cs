@@ -1,4 +1,4 @@
-﻿using System.Windows.Forms;
+using System.Windows.Forms;
 
 namespace BankSystem.View
 {
@@ -139,7 +139,7 @@ namespace BankSystem.View
             this.buttonAddAccount.Size = new System.Drawing.Size(100, 30);
             this.buttonAddAccount.TabIndex = 0;
             this.buttonAddAccount.Text = "Thêm";
-            this.buttonAddAccount.Click += new System.EventHandler(this.buttonAdd_Click);
+            this.buttonAddAccount.Click += buttonAdd_Click;
             // 
             // buttonUpdateAccount
             // 
@@ -148,7 +148,7 @@ namespace BankSystem.View
             this.buttonUpdateAccount.Size = new System.Drawing.Size(100, 30);
             this.buttonUpdateAccount.TabIndex = 0;
             this.buttonUpdateAccount.Text = "Cập nhật";
-            this.buttonUpdateAccount.Click += new System.EventHandler(this.buttonUpdate_Click);
+            this.buttonUpdateAccount.Click += buttonUpdate_Click;
             // 
             // buttonDeleteAccount
             // 
@@ -157,7 +157,7 @@ namespace BankSystem.View
             this.buttonDeleteAccount.Size = new System.Drawing.Size(100, 30);
             this.buttonDeleteAccount.TabIndex = 2;
             this.buttonDeleteAccount.Text = "Xoá";
-            this.buttonDeleteAccount.Click += new System.EventHandler(this.buttonDelete_Click);
+            this.buttonDeleteAccount.Click += buttonDelete_Click;
             // 
             // titleMain
             // 
