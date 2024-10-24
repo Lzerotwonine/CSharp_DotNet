@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 using BankSystem.Controller;
 
@@ -82,6 +82,10 @@ namespace BankSystem.View
         // Phương thức xử lý việc logout
         private void Logout()
         {
+            foreach (Form childForm in this.MdiChildren)
+            {
+                childForm.Close(); // Đóng form con
+            }
             currentUserId = null;
             currentUserRole = null;
             userLabel.Visible = false; // Ẩn thông tin người dùng
@@ -105,8 +109,11 @@ namespace BankSystem.View
         {
             if (keyData == Keys.Escape && currentUserId != null)
             {
-                Logout();
-                return true;
+                if (MessageBox.Show("Bạn có chắc chắn muốn thoát?", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Logout();
+                    return true;
+                }
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
