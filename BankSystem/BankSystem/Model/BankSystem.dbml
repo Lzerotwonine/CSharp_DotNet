@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BankSystem" Class="BankSystemDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-GF6DKHM;Initial Catalog=BankSystem;Integrated Security=True;Trust Server Certificate=True" SettingsObjectName="BankSystem.Properties.Settings" SettingsPropertyName="BankSystemConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Account" Member="Accounts">
+    <Type Name="Account">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CustomerId" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="DateOpened" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Balance" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="Account_BankTransaction" Member="BankTransactions" ThisKey="Id" OtherKey="AccountFromId" Type="BankTransaction" />
+      <Association Name="Account_BankTransaction1" Member="BankTransactions1" ThisKey="Id" OtherKey="AccountToId" Type="BankTransaction" />
+      <Association Name="Customer_Account" Member="Customer" ThisKey="CustomerId" OtherKey="Id" Type="Customer" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Employee" Member="Employees">
+    <Type Name="Employee">
+      <Column Name="Id" Type="System.String" DbType="VarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Role" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="Employee_BankTransaction" Member="BankTransactions" ThisKey="Id" OtherKey="EmployeeId" Type="BankTransaction" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BankTransaction" Member="BankTransactions">
+    <Type Name="BankTransaction">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AccountFromId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AccountToId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="DateOfTrans" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeId" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="BranchId" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Pin" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="Account_BankTransaction" Member="Account" ThisKey="AccountFromId" OtherKey="Id" Type="Account" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="Account_BankTransaction1" Member="Account1" ThisKey="AccountToId" OtherKey="Id" Type="Account" IsForeignKey="true" />
+      <Association Name="Employee_BankTransaction" Member="Employee" ThisKey="EmployeeId" OtherKey="Id" Type="Employee" IsForeignKey="true" />
+      <Association Name="Branch_BankTransaction" Member="Branch" ThisKey="BranchId" OtherKey="Id" Type="Branch" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Branch" Member="Branches">
+    <Type Name="Branch">
+      <Column Name="Id" Type="System.String" DbType="VarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="HouseNo" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="Branch_BankTransaction" Member="BankTransactions" ThisKey="Id" OtherKey="BranchId" Type="BankTransaction" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Customer" Member="Customers">
+    <Type Name="Customer">
+      <Column Name="Id" Type="System.String" DbType="VarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="HouseNo" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Pin" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="Customer_Account" Member="Accounts" ThisKey="Id" OtherKey="CustomerId" Type="Account" />
+    </Type>
+  </Table>
+</Database>
