@@ -59,45 +59,46 @@ CREATE TABLE BankTransaction (
 );
 
 INSERT INTO Customer (Id, Name, Phone, Email, HouseNo, City, Pin) VALUES
-('C001', N'Trần Nguyễn Gia Long', '0901234567', 'trangnuyengialong@example.com', N'123', N'Hồ Chí Minh', '700000'),
-('C002', N'Nguyễn Gia Hưng', '0912345678', 'nguyengiahung@example.com', N'456', N'Hà Nội', '100000'),
-('C003', N'Trần Gia Huy', '0923456789', 'trangiahuy@example.com', N'789', N'Đà Nẵng', '500000'),
-('C004', N'Phạm Thị Hoa', '0934567890', 'phamthihoa@example.com', N'321', N'Cần Thơ', '900000'),
-('C005', N'Hoàng Văn Em', '0945678901', 'hoangvanem@example.com', N'654', N'Hải Phòng', '400000');
+('C001', N'Nguyễn Thị Mai', '0909876543', 'nguyenthimai@example.com', N'111', N'Hồ Chí Minh', '700001'),
+('C002', N'Trần Văn Bảo', '0918765432', 'tranvanbao@example.com', N'222', N'Hà Nội', '100001'),
+('C003', N'Phan Thị Bình', '0927654321', 'panthibinh@example.com', N'333', N'Đà Nẵng', '500001'),
+('C004', N'Lê Văn An', '0936543210', 'levanan@example.com', N'444', N'Cần Thơ', '900001'),
+('C005', N'Ngô Văn Tài', '0945432109', 'ngovanthai@example.com', N'555', N'Hải Phòng', '400001');
 
 INSERT INTO Employee (Id, Name, Password, Role) VALUES
-('E001', N'Nguyễn Văn Phúc', CONVERT(VARCHAR(128), HASHBYTES('SHA2_256', '123'), 2), 'Admin'),
-('E002', N'Trần Thị Loan', CONVERT(VARCHAR(128), HASHBYTES('SHA2_256', '456'), 2), 'User'),
-('E003', N'Lê Văn Huỳnh', CONVERT(VARCHAR(128), HASHBYTES('SHA2_256', '789'), 2), 'Admin'),
-('E004', N'Phạm Thị Yến', CONVERT(VARCHAR(128), HASHBYTES('SHA2_256', '101112'), 2), 'User'),
-('E005', N'Hoàng Văn Đông', CONVERT(VARCHAR(128), HASHBYTES('SHA2_256', '131415'), 2), 'Admin');
+('E001', N'Đỗ Minh Huy', CONVERT(VARCHAR(128), HASHBYTES('SHA2_256', 'abc123'), 2), 'Admin'),
+('E002', N'Nguyễn Thị Thanh', CONVERT(VARCHAR(128), HASHBYTES('SHA2_256', 'def456'), 2), 'User'),
+('E003', N'Vũ Minh Tuấn', CONVERT(VARCHAR(128), HASHBYTES('SHA2_256', 'ghi789'), 2), 'Admin'),
+('E004', N'Phạm Minh Khánh', CONVERT(VARCHAR(128), HASHBYTES('SHA2_256', 'jkl101112'), 2), 'User'),
+('E005', N'Trần Văn Lộc', CONVERT(VARCHAR(128), HASHBYTES('SHA2_256', 'mno131415'), 2), 'Admin');
 
 INSERT INTO Branch (Id, Name, HouseNo, City) VALUES
-('B001', N'Chi nhánh 1', N'10', N'Hồ Chí Minh'),
-('B002', N'Chi nhánh 2', N'20', N'Hà Nội'),
-('B003', N'Chi nhánh 3', N'30', N'Đà Nẵng'),
-('B004', N'Chi nhánh 4', N'40', N'Cần Thơ'),
-('B005', N'Chi nhánh 5', N'50', N'Hải Phòng');
+('B001', N'Chi nhánh Nam', N'12', N'Hồ Chí Minh'),
+('B002', N'Chi nhánh Bắc', N'22', N'Hà Nội'),
+('B003', N'Chi nhánh Trung', N'32', N'Đà Nẵng'),
+('B004', N'Chi nhánh Tây', N'42', N'Cần Thơ'),
+('B005', N'Chi nhánh Đông', N'52', N'Hải Phòng');
 
 INSERT INTO Account (Id, CustomerId, DateOpened, Balance) VALUES
-(1, 'C001', '2024-01-01', 1000.0),
-(2, 'C002', '2024-01-02', 2000.0),
-(3, 'C003', '2024-01-03', 3000.0),
-(4, 'C004', '2024-01-04', 4000.0),
-(5, 'C005', '2024-01-05', 5000.0);
+(1, 'C001', '2024-02-01', 1500.0),
+(2, 'C002', '2024-02-02', 2500.0),
+(3, 'C003', '2024-02-03', 3500.0),
+(4, 'C004', '2024-02-04', 4500.0),
+(5, 'C005', '2024-02-05', 5500.0);
 
 -- Kiểm tra các Id hiện có trong bảng Account
 SELECT * FROM BankTransaction;
 
 -- Cập nhật lại các lệnh INSERT trong BankTransaction
 INSERT INTO BankTransaction (Type, AccountFromId, Amount, DateOfTrans, EmployeeId, BranchId, Description)
-VALUES ('Deposit', 1, 5000, GETDATE(), 'E001', 'B001', 'Nạp tiền vào tài khoản 1');
+VALUES ('Deposit', 1, 6000, GETDATE(), 'E001', 'B001', 'Nạp tiền vào tài khoản 1');
 
 INSERT INTO BankTransaction (Type, AccountFromId, Amount, DateOfTrans, EmployeeId, BranchId, Description)
-VALUES ('Withdraw', 1, 3000, GETDATE(), 'E001', 'B001', 'Rút tiền từ tài khoản 1');
+VALUES ('Withdraw', 1, 2000, GETDATE(), 'E001', 'B001', 'Rút tiền từ tài khoản 1');
 
 INSERT INTO BankTransaction (Type, AccountFromId, AccountToId, Amount, DateOfTrans, EmployeeId, BranchId, Description)
-VALUES ('Transfer', 1, 2, 2000, GETDATE(), 'E001', 'B001', 'Chuyển tiền từ tài khoản 1 đến tài khoản 2');
+VALUES ('Transfer', 1, 2, 3000, GETDATE(), 'E001', 'B001', 'Chuyển tiền từ tài khoản 1 đến tài khoản 2');
+
 
 
 
