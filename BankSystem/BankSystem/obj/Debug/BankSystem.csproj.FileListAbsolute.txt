@@ -1,0 +1,94 @@
+C:\Users\Long\source\repos\BankSystem\BankSystem\obj\Debug\BankSystem.csproj.AssemblyReference.cache
+C:\Users\Long\source\repos\BankSystem\BankSystem\obj\Debug\BankSystem.Properties.Resources.resources
+C:\Users\Long\source\repos\BankSystem\BankSystem\obj\Debug\BankSystem.View.BranchForm.resources
+C:\Users\Long\source\repos\BankSystem\BankSystem\obj\Debug\BankSystem.View.CustomerForm.resources
+C:\Users\Long\source\repos\BankSystem\BankSystem\obj\Debug\BankSystem.View.EmployeeForm.resources
+C:\Users\Long\source\repos\BankSystem\BankSystem\obj\Debug\BankSystem.View.Login.resources
+C:\Users\Long\source\repos\BankSystem\BankSystem\obj\Debug\BankSystem.View.MainMenu.resources
+C:\Users\Long\source\repos\BankSystem\BankSystem\obj\Debug\BankSystem.csproj.GenerateResource.cache
+C:\Users\Long\source\repos\BankSystem\BankSystem\obj\Debug\BankSystem.csproj.CoreCompileInputs.cache
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.csproj.AssemblyReference.cache
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.Properties.Resources.resources
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.View.BranchForm.resources
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.View.CustomerForm.resources
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.View.EmployeeForm.resources
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.View.Login.resources
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.View.MainMenu.resources
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.csproj.GenerateResource.cache
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.csproj.CoreCompileInputs.cache
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\BankSystem.exe.config
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\BankSystem.exe
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\BankSystem.pdb
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.exe
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.pdb
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\System.Data.SqlClient.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\System.Data.SqlClient.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.View.AccountForm.resources
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.csproj.Up2Date
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.View.DepositForm.resources
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.View.TransferForm.resources
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.View.WithdrawForm.resources
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.barcodes.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.bouncy-castle-connector.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.commons.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.forms.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.io.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.kernel.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.layout.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.pdfa.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.pdfua.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.sign.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.styledxmlparser.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.svg.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\Microsoft.Extensions.Logging.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\Microsoft.Extensions.Options.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\Microsoft.Extensions.Primitives.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\Newtonsoft.Json.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\System.Buffers.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\System.Memory.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\System.Numerics.Vectors.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\System.ValueTuple.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.barcodes.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.bouncy-castle-connector.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.commons.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.forms.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.io.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.kernel.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.layout.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.pdfa.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.pdfua.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.sign.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.styledxmlparser.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.svg.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\Microsoft.Extensions.Logging.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\Microsoft.Extensions.Options.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\Microsoft.Extensions.Primitives.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\Newtonsoft.Json.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\System.Buffers.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\System.Memory.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\System.Numerics.Vectors.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\System.ValueTuple.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\BouncyCastle.Crypto.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\bc-fips-1.0.2.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\bcpkix-fips-1.0.2.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\BouncyCastle.Cryptography.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.bouncy-castle-adapter.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.bouncy-castle-fips-adapter.dll
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\BouncyCastle.Cryptography.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.bouncy-castle-adapter.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\bin\Debug\itext.bouncy-castle-fips-adapter.xml
+D:\Long's Folder\Study\HKI (Năm 4)\.Net\Example\BankSystem\BankSystem\obj\Debug\BankSystem.View.BalanceForm.resources
