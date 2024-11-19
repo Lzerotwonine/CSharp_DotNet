@@ -35,7 +35,6 @@ CREATE TABLE PhieuMuon (
 	MaKhach NVARCHAR(50) NOT NULL,
 	TienCoc FLOAT NOT NULL,
 	HoatDong BIT NOT NULL,
-	TienTra FLOAT NOT NULL
 	FOREIGN KEY (MaKhach) REFERENCES Khach(MaKhach) ON DELETE CASCADE
 )
 
@@ -95,11 +94,11 @@ CREATE TABLE QuanLyKho (
 --    ('KH005', N'Lưu Đại Hải', '0934567890', N'Hải Phòng');
 
 --INSERT INTO PhieuMuon (MaHDMuon, NgayMuon, NgayTra, MaKhach, TienCoc, HoatDong) VALUES 
---    ('PM001', '2023-10-01', '2023-10-15', 'KH001', 100000, 1, 100000),
---    ('PM002', '2023-10-05', '2023-10-20', 'KH002', 150000, 1, 150000),
---    ('PM003', '2023-10-10', '2023-10-25', 'KH003', 120000, 1, 120000),
---    ('PM004', '2023-10-15', '2023-10-30', 'KH004', 130000, 1, 130000),
---    ('PM005', '2023-10-20', '2023-11-05', 'KH005', 90000, 1, 90000);
+--    ('PM001', '2023-10-01', '2023-10-15', 'KH001', 100000, 1),
+--    ('PM002', '2023-10-05', '2023-10-20', 'KH002', 150000, 1),
+--    ('PM003', '2023-10-10', '2023-10-25', 'KH003', 120000, 1),
+--    ('PM004', '2023-10-15', '2023-10-30', 'KH004', 130000, 1),
+--    ('PM005', '2023-10-20', '2023-11-05', 'KH005', 90000, 1);
 
 --INSERT INTO PhieuTra (MaHDTra, MaHDMuon, NgayTraHang, GhiChu, TongTien, SoTienPhat) VALUES 
 --    ('PT001', 'PM001', '2023-10-15', N'Hoàn thành', 300000, 0),
