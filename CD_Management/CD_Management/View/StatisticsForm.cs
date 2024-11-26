@@ -135,16 +135,7 @@ namespace CD_Management.View
             }
             else
             {
-                //MessageBox.Show("Không có dữ liệu.");
-                DisplayData("Phiếu quá hạn trả", new List<(string, string)>
-                {
-                    ("Mã Phiếu", "Key"),
-                    ("Ngày Mượn", "BorrowDate"),
-                    ("Ngày Trả", "Date"),
-                    ("Mã Khách", "CustomerID"),
-                    ("Tiền Cọc", "Deposit"),
-                    ("Hoạt Động", "Active")
-                });
+                MessageBox.Show("Không có dữ liệu.");
                 currentStatistics.Clear();
                 UpdateSearchComboBox();
             }
