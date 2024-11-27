@@ -1,4 +1,4 @@
-﻿using CD_Management.Controller;
+using CD_Management.Controller;
 using CD_Management.Model;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ namespace CD_Management.Controller
 {
     internal class RentalRequestController : IController
     {
-        private readonly string connectionString = "Data Source=DESKTOP-GF6DKHM;Initial Catalog=CD_Management;Integrated Security=True";
+        private readonly string connectionString = "Data Source=DESKTOP-08N8TNO\\SQLEXPRESS;Initial Catalog=CD_Management;Integrated Security=True";
         public List<IModel> Items { get; private set; }
 
         public RentalRequestController()
@@ -120,39 +120,9 @@ namespace CD_Management.Controller
             {
                 return false;
             }
-        }
-        public List<RentalRequestModel> GetAllRentalRequests()
-        {
-            var rentalRequests = new List<RentalRequestModel>();
 
-            string query = "SELECT MaHDMuon, NgayMuon, NgayTra, MaKhach, TienCoc, HoatDong, TienTra FROM PhieuMuon WHERE HoatDong = 0";
-            using (var connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                using (var command = new SqlCommand(query, connection))
-                {
-                    using (var reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            var rentalRequest = new RentalRequestModel
-                            {
-                                MaHDMuon = reader["MaHDMuon"]?.ToString(),
-                                NgayMuon = reader["NgayMuon"] != DBNull.Value ? Convert.ToDateTime(reader["NgayMuon"]) : DateTime.MinValue,
-                                NgayTra = reader["NgayTra"] != DBNull.Value ? Convert.ToDateTime(reader["NgayTra"]) : DateTime.MinValue,
-                                MaKhach = reader["MaKhach"]?.ToString(),
-                                TienCoc = reader["TienCoc"] != DBNull.Value ? Convert.ToSingle(reader["TienCoc"]) : 0,
-                                HoatDong = reader["HoatDong"] != DBNull.Value && Convert.ToBoolean(reader["HoatDong"]),
-                                TienTra = reader["TienTra"] != DBNull.Value ? (float?)Convert.ToSingle(reader["TienTra"]) : null
-                            };
-                            rentalRequests.Add(rentalRequest);
-                        }
-                    }
-                }
-            }
-
-            return rentalRequests;
         }
+
         public RentalRequestModel GetRentalRequestByMaHDMuon(string maHDMuon)
         {
             RentalRequestModel rentalRequest = null;
@@ -233,24 +203,32 @@ namespace CD_Management.Controller
         public List<string> GetAllMaPhieuMuon()
         {
             var maPhieuMuonList = new List<string>();
-
-            string query = "SELECT MaHDMuon FROM PhieuMuon";
+            string query = "SELECT MaHDMuon FROM PhieuMuon WHERE HoatDong = 0";  
 
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand(query, connection))
             {
-                connection.Open();
-
-                using (var reader = command.ExecuteReader())
+                try
                 {
-                    while (reader.Read())
+                    connection.Open(); 
+
+                    using (var reader = command.ExecuteReader()) 
                     {
-                        maPhieuMuonList.Add(reader["MaHDMuon"].ToString());
+                        while (reader.Read()) 
+                        {
+                            // Thêm mã phiếu mượn vào danh sách
+                            maPhieuMuonList.Add(reader["MaHDMuon"].ToString());
+                        }
                     }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý lỗi nếu có
+                    Console.WriteLine("Lỗi khi lấy danh sách mã phiếu mượn: " + ex.Message);
                 }
             }
 
-            return maPhieuMuonList;
+            return maPhieuMuonList; 
         }
 
     }
