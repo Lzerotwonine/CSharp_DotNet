@@ -1,4 +1,4 @@
-﻿namespace CD_Management.View
+namespace CD_Management.View
 {
     partial class ReturnRequest
     {
