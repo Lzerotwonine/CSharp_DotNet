@@ -21,17 +21,19 @@ namespace CD_Management.Controller
         }
 
         // Tìm kiếm băng theo tên, tác giả, thể loại
-        public List<IModel> Search(string tenBang = null, string tacGia = null, string theLoai = null)
+        public List<IModel> Search(string maBang = null, string tenBang = null, string tacGia = null, string theLoai = null)
         {
             var query = db.Bangs.AsQueryable();
-
+        
+            if (!string.IsNullOrEmpty(maBang))
+                query = query.Where(b => b.MaBang.Contains(maBang));
             if (!string.IsNullOrEmpty(tenBang))
                 query = query.Where(b => b.TenBang.Contains(tenBang));
             if (!string.IsNullOrEmpty(tacGia))
                 query = query.Where(b => b.TacGia.Contains(tacGia));
             if (!string.IsNullOrEmpty(theLoai))
                 query = query.Where(b => b.TheLoai.Contains(theLoai));
-
+        
             return query.Select(b => new CDModel
             {
                 MaBang = b.MaBang,
