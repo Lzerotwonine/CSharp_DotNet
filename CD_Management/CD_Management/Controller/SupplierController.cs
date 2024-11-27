@@ -137,27 +137,27 @@ namespace CD_Management.Controller
         }
 
         // Tìm kiếm nhà cung cấp theo mã hoặc tên
-        public List<IModel> Search(string maNhaCungCap = null, string tenNhaCungCap = null)
+        public List<SupplierModel> Search(string maNhaCungCap = null, string tenNhaCungCap = null)
         {
             var query = db.NhaCungCaps.AsQueryable();
-
+        
             if (!string.IsNullOrEmpty(maNhaCungCap))
             {
                 query = query.Where(s => s.MaNhaCungCap.Contains(maNhaCungCap));
             }
-
+        
             if (!string.IsNullOrEmpty(tenNhaCungCap))
             {
                 query = query.Where(s => s.TenNhaCungCap.Contains(tenNhaCungCap));
             }
-
+        
             return query.Select(s => new SupplierModel
             {
                 MaNhaCungCap = s.MaNhaCungCap,
                 TenNhaCungCap = s.TenNhaCungCap,
                 DiaChi = s.DiaChi,
                 SoDienThoai = s.SoDienThoai
-            }).Cast<IModel>().ToList();
+            }).ToList();
         }
     }
 }
