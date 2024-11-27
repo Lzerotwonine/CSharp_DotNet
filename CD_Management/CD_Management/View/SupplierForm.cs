@@ -180,6 +180,8 @@ namespace CD_Management.View
             textBoxTenNCC.Clear();
             textBoxDiaChi.Clear();
             textBoxSoDienThoai.Clear();
+
+            LoadSuppliersFromDatabase();
         }
 
         // Hiển thị thông tin nhà cung cấp khi chọn trong DataGridView
