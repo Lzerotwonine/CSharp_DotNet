@@ -172,6 +172,8 @@ namespace CD_Management.View
             textBoxTenKhach.Clear();
             textBoxSoDienThoai.Clear();
             textBoxDiaChi.Clear();
+
+            LoadKhachList();
         }
 
         // Hiển thị thông tin khách hàng khi chọn trong DataGridView
