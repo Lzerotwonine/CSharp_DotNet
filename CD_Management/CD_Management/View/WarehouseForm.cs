@@ -1,4 +1,4 @@
-﻿using CD_Management.Controller;
+using CD_Management.Controller;
 using CD_Management.Model;
 using System;
 using System.Data;
@@ -20,8 +20,8 @@ namespace CD_Management.View
         }
         public enum TransactionType
         {
-            Import,
-            Export
+            Nhập,
+            Xuất
         }
 
         // Khởi tạo DataGridView
@@ -30,37 +30,37 @@ namespace CD_Management.View
             dataGridViewWarehouse.AutoGenerateColumns = false;
 
             DataGridViewTextBoxColumn idColumn = new DataGridViewTextBoxColumn();
-            idColumn.HeaderText = "Transaction ID";
+            idColumn.HeaderText = "Mã Giao Dịch";
             idColumn.DataPropertyName = "Id";
             dataGridViewWarehouse.Columns.Add(idColumn);
 
             DataGridViewTextBoxColumn itemIdColumn = new DataGridViewTextBoxColumn();
-            itemIdColumn.HeaderText = "Item ID";
+            itemIdColumn.HeaderText = "Mã Băng";
             itemIdColumn.DataPropertyName = "ItemId";
             dataGridViewWarehouse.Columns.Add(itemIdColumn);
 
             DataGridViewTextBoxColumn transactionTypeColumn = new DataGridViewTextBoxColumn();
-            transactionTypeColumn.HeaderText = "Transaction Type";
+            transactionTypeColumn.HeaderText = "Loại Giao Dịch";
             transactionTypeColumn.DataPropertyName = "TransactionType";
             dataGridViewWarehouse.Columns.Add(transactionTypeColumn);
 
             DataGridViewTextBoxColumn quantityColumn = new DataGridViewTextBoxColumn();
-            quantityColumn.HeaderText = "Quantity";
+            quantityColumn.HeaderText = "Số Lượng";
             quantityColumn.DataPropertyName = "Quantity";
             dataGridViewWarehouse.Columns.Add(quantityColumn);
 
             DataGridViewTextBoxColumn dateColumn = new DataGridViewTextBoxColumn();
-            dateColumn.HeaderText = "Transaction Date";
+            dateColumn.HeaderText = "Ngày Giao Dịch";
             dateColumn.DataPropertyName = "TransactionDate";
             dataGridViewWarehouse.Columns.Add(dateColumn);
 
             DataGridViewTextBoxColumn supplierColumn = new DataGridViewTextBoxColumn();
-            supplierColumn.HeaderText = "Supplier ID";
+            supplierColumn.HeaderText = "Mã Nhà Cung Cấp";
             supplierColumn.DataPropertyName = "SupplierId";
             dataGridViewWarehouse.Columns.Add(supplierColumn);
 
             DataGridViewTextBoxColumn notesColumn = new DataGridViewTextBoxColumn();
-            notesColumn.HeaderText = "Notes";
+            notesColumn.HeaderText = "Ghi chú";
             notesColumn.DataPropertyName = "Notes";
             dataGridViewWarehouse.Columns.Add(notesColumn);
         }
@@ -71,17 +71,29 @@ namespace CD_Management.View
             warehouseController.Load();
             var transactions = warehouseController.Items.Cast<WarehouseModel>().ToList();
 
-            if (rbtnImport.Checked)
-                transactions = transactions.Where(t => t.TransactionType == "Import").ToList();
-            else if (rbtnExport.Checked)
-                transactions = transactions.Where(t => t.TransactionType == "Export").ToList();
-
             dataGridViewWarehouse.DataSource = transactions;
         }
 
-        private void rbtn_CheckedChanged(object sender, EventArgs e)
+        private void TransactionType_CheckedChanged(object sender, EventArgs e)
         {
-            LoadTransactionsFromDatabase();
+            if (rbtnImport.Checked)
+            {
+                // Khi chọn Nhập, cập nhật ghi chú
+                textBoxNotes.Text = $"Nhập hàng từ {textBoxSupplierId.Text}";
+            }
+            else if (rbtnExport.Checked)
+            {
+                // Khi chọn Xuất, cập nhật ghi chú
+                textBoxNotes.Text = "Xuất hàng cho khách";
+            }
+        }
+        private void SupplierId_TextChanged(object sender, EventArgs e)
+        {
+            if (rbtnImport.Checked)
+            {
+                // Cập nhật ghi chú khi Mã Nhà Cung Cấp thay đổi
+                textBoxNotes.Text = $"Nhập hàng từ {textBoxSupplierId.Text}";
+            }
         }
 
         // Lấy dữ liệu từ form
@@ -91,14 +103,13 @@ namespace CD_Management.View
 
             currentTransaction.Id = textBoxTransactionId.Text;
             currentTransaction.ItemId = textBoxItemId.Text;
-            currentTransaction.TransactionType = rbtnImport.Checked ? "Import" : "Export";
+            currentTransaction.TransactionType = rbtnImport.Checked ? "Nhập" : "Xuất";
             currentTransaction.Quantity = int.TryParse(textBoxQuantity.Text, out int quantity) ? quantity : 0;
             currentTransaction.TransactionDate = dateTimePickerTransactionDate.Value;
             currentTransaction.SupplierId = textBoxSupplierId.Text;
             currentTransaction.Notes = textBoxNotes.Text;
         }
 
-        // Đưa dữ liệu lên form
         // Đưa dữ liệu lên form
         public void SetDataToText(object item)
         {
@@ -108,15 +119,9 @@ namespace CD_Management.View
                 textBoxTransactionId.Text = transaction.Id;
                 textBoxItemId.Text = transaction.ItemId;
 
-                // So sánh với chuỗi
-                if (transaction.TransactionType == "Import")
-                {
-                    rbtnImport.Checked = true;
-                }
-                else if (transaction.TransactionType == "Export")
-                {
-                    rbtnExport.Checked = true;
-                }
+                // Cập nhật loại giao dịch lên Radio Button
+                rbtnImport.Checked = transaction.TransactionType == "Nhập";
+                rbtnExport.Checked = transaction.TransactionType == "Xuất";
 
                 textBoxQuantity.Text = transaction.Quantity.ToString();
                 dateTimePickerTransactionDate.Value = transaction.TransactionDate;
@@ -191,40 +196,20 @@ namespace CD_Management.View
                 MessageBox.Show("Chưa chọn giao dịch để xoá.");
             }
         }
-
-        private void buttonImport_Click(object sender, EventArgs e)
+        private void buttonClear_Click(object sender, EventArgs e)
         {
-            rbtnImport.Checked = true; // Đảm bảo chế độ là Nhập kho
-            GetDataFromText();
-            currentTransaction.TransactionType = "Import";
+            // Xóa dữ liệu trong các TextBox
+            textBoxTransactionId.Clear();
+            textBoxItemId.Clear();
+            textBoxQuantity.Clear();
+            textBoxSupplierId.Clear();
+            textBoxNotes.Clear();
 
-            if (warehouseController.Create(currentTransaction))
-            {
-                LoadTransactionsFromDatabase();
-                MessageBox.Show("Đã thêm Nhập kho thành công.");
-            }
-            else
-            {
-                MessageBox.Show("Không thể thêm Nhập kho.");
-            }
+            // Đặt giá trị mặc định cho các điều khiển khác
+            dateTimePickerTransactionDate.Value = DateTime.Now; // Ngày giao dịch về ngày hiện tại
+            rbtnImport.Checked = false; // Bỏ chọn cả hai loại giao dịch
+            rbtnExport.Checked = false;
         }
-        private void buttonExport_Click(object sender, EventArgs e)
-        {
-            rbtnExport.Checked = true; // Đảm bảo chế độ là Xuất kho
-            GetDataFromText();
-            currentTransaction.TransactionType = "Export";
-
-            if (warehouseController.Create(currentTransaction))
-            {
-                LoadTransactionsFromDatabase();
-                MessageBox.Show("Đã thêm Xuất kho thành công.");
-            }
-            else
-            {
-                MessageBox.Show("Không thể thêm Xuất kho.");
-            }
-        }
-
 
         private void ConfirmDelete()
         {
