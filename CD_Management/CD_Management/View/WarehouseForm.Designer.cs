@@ -81,6 +81,7 @@ namespace CD_Management.View
             this.buttonAdd.TabIndex = 11;
             this.buttonAdd.Text = "Thêm";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // buttonClear
             // 
@@ -100,6 +101,7 @@ namespace CD_Management.View
             this.buttonUpdate.TabIndex = 12;
             this.buttonUpdate.Text = "Sửa";
             this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // buttonSearch
             // 
@@ -118,6 +120,7 @@ namespace CD_Management.View
             this.buttonDelete.TabIndex = 13;
             this.buttonDelete.Text = "Xoá";
             this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // rbtnExport
             // 
