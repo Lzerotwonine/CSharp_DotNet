@@ -210,7 +210,7 @@ namespace CD_Management.View
             rbtnImport.Checked = false; // Bỏ chọn cả hai loại giao dịch
             rbtnExport.Checked = false;
 
-            ClearSearch();
+            LoadTransactionsFromDatabase();
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
@@ -233,17 +233,6 @@ namespace CD_Management.View
                 MessageBox.Show("Không tìm thấy giao dịch nào phù hợp.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadTransactionsFromDatabase(); // Tải lại tất cả giao dịch nếu không tìm thấy
             }
-        }
-
-        // Xóa kết quả tìm kiếm
-        private void ClearSearch()
-        {
-            LoadTransactionsFromDatabase(); // Tải lại danh sách giao dịch đầy đủ
-            textBoxTransactionId.Clear();
-            textBoxItemId.Clear();
-            textBoxSupplierId.Clear();
-            rbtnImport.Checked = false;
-            rbtnExport.Checked = false;
         }
 
         private void ConfirmDelete()
