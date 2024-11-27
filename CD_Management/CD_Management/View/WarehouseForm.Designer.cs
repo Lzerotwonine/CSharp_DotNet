@@ -112,15 +112,6 @@ namespace CD_Management.View
             this.buttonSearch.Text = "Tìm kiếm";
             this.buttonSearch.UseVisualStyleBackColor = true;
             this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
-
-            // 
-            // buttonClear
-            // 
-
-            this.buttonClear.Text = "Xoá trắng";
-            this.buttonClear.Size = new System.Drawing.Size(80, 30);
-            this.buttonClear.Location = new System.Drawing.Point(150, 70);
-            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // buttonDelete
             // 
