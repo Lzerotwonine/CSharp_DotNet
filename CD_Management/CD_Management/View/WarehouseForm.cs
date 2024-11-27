@@ -209,6 +209,41 @@ namespace CD_Management.View
             dateTimePickerTransactionDate.Value = DateTime.Now; // Ngày giao dịch về ngày hiện tại
             rbtnImport.Checked = false; // Bỏ chọn cả hai loại giao dịch
             rbtnExport.Checked = false;
+
+            ClearSearch();
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            string id = textBoxTransactionId.Text.Trim();
+            string itemId = textBoxItemId.Text.Trim();
+            string transactionType = rbtnImport.Checked ? "Nhập" : rbtnExport.Checked ? "Xuất" : "";
+            string supplierId = textBoxSupplierId.Text.Trim();
+
+            // Gọi phương thức tìm kiếm từ Controller
+            var results = warehouseController.Search(id, itemId, transactionType, supplierId);
+
+            if (results != null && results.Count > 0)
+            {
+                // Hiển thị kết quả tìm kiếm
+                dataGridViewWarehouse.DataSource = results.Cast<WarehouseModel>().ToList();
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy giao dịch nào phù hợp.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadTransactionsFromDatabase(); // Tải lại tất cả giao dịch nếu không tìm thấy
+            }
+        }
+
+        // Xóa kết quả tìm kiếm
+        private void ClearSearch()
+        {
+            LoadTransactionsFromDatabase(); // Tải lại danh sách giao dịch đầy đủ
+            textBoxTransactionId.Clear();
+            textBoxItemId.Clear();
+            textBoxSupplierId.Clear();
+            rbtnImport.Checked = false;
+            rbtnExport.Checked = false;
         }
 
         private void ConfirmDelete()
@@ -241,39 +276,5 @@ namespace CD_Management.View
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
-
-        private void buttonSearch_Click(object sender, EventArgs e)
-        {
-            string id = textBoxTransactionId.Text.Trim();
-            string itemId = textBoxItemId.Text.Trim();
-            string transactionType = rbtnImport.Checked ? "Nhập" : rbtnExport.Checked ? "Xuất" : "";
-            string supplierId = textBoxSupplierId.Text.Trim();
-
-            // Gọi phương thức tìm kiếm từ Controller
-            var results = warehouseController.Search(id, itemId, transactionType, supplierId);
-
-            if (results != null && results.Count > 0)
-            {
-                // Hiển thị kết quả tìm kiếm
-                dataGridViewWarehouse.DataSource = results.Cast<WarehouseModel>().ToList();
-            }
-            else
-            {
-                MessageBox.Show("Không tìm thấy giao dịch nào phù hợp.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadTransactionsFromDatabase(); // Tải lại tất cả giao dịch nếu không tìm thấy
-            }
-        }
-
-        // Xóa kết quả tìm kiếm
-        private void buttonClearSearch_Click(object sender, EventArgs e)
-        {
-            LoadTransactionsFromDatabase(); // Tải lại danh sách giao dịch đầy đủ
-            textBoxTransactionId.Clear();
-            textBoxItemId.Clear();
-            textBoxSupplierId.Clear();
-            rbtnImport.Checked = false;
-            rbtnExport.Checked = false;
-        }
-
     }
 }
