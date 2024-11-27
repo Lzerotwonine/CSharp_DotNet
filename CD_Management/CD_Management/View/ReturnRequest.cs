@@ -1,4 +1,4 @@
-﻿using CD_Management.Controller;
+using CD_Management.Controller;
 using CD_Management.Model;
 using System;
 using System.Collections.Generic;
@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 using System.Windows.Forms;
 
 namespace CD_Management.View
@@ -34,10 +35,14 @@ namespace CD_Management.View
             /*dataGridReturn.Columns.Add("HoatDong", "Hoạt Động");*/
             dataGridReturn.Columns.Add("TienTra", "Tiền Trả");
         }
+
+
+
         private void LoadPMComboBox()
         {
             var rentalRequestController = new RentalRequestController();
             List<string> maPhieuMuonList = rentalRequestController.GetAllMaPhieuMuon();
+            
 
             cbbPM.Items.Clear();
             foreach (var maPhieu in maPhieuMuonList)
@@ -110,7 +115,7 @@ namespace CD_Management.View
                 MaHDTra = maHDTra,
                 MaHDMuon = maHDMuon,
                 NgayTraHang = ngayTraHang,
-                TongTienTra = tongTienTra
+                TongTien = tongTienTra
             };
 
             var returnRequestController = new ReturnRequestController();
@@ -135,6 +140,8 @@ namespace CD_Management.View
                 if (updateSuccess)
                 {
                     MessageBox.Show("Phiếu trả đã được lưu thành công và trạng thái phiếu mượn đã được cập nhật.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //LoadPMComboBox();
+                    ClearForm();
                 }
                 else
                 {
@@ -142,7 +149,7 @@ namespace CD_Management.View
                 }
 
                 // Làm sạch form
-                ClearForm();
+                
             }
             else
             {
@@ -151,7 +158,9 @@ namespace CD_Management.View
         }
         private void ClearForm()
         {
-            txtMaPT.Clear();         
+            txtMaPT.Clear();
+            LoadPMComboBox();
         }
+
     }
 }
