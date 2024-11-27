@@ -2,13 +2,6 @@ using CD_Management.Controller;
 using CD_Management.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Configuration;
 using System.Windows.Forms;
 
 namespace CD_Management.View
@@ -40,9 +33,9 @@ namespace CD_Management.View
 
         private void LoadPMComboBox()
         {
-            var rentalRequestController = new RentalRequestController();
+            //var rentalRequestController = new RentalRequestController();
             List<string> maPhieuMuonList = rentalRequestController.GetAllMaPhieuMuon();
-            
+
 
             cbbPM.Items.Clear();
             foreach (var maPhieu in maPhieuMuonList)
@@ -84,7 +77,7 @@ namespace CD_Management.View
         private void btnSave_Click(object sender, EventArgs e)
         {
             string maHDTra = txtMaPT.Text.Trim();
-            string maHDMuon = cbbPM.Text.Trim(); 
+            string maHDMuon = cbbPM.Text.Trim();
             DateTime ngayTraHang = DateTime.Now;
             float tongTienTra = 0;
             if (dataGridReturn.SelectedRows.Count > 0)
@@ -140,8 +133,8 @@ namespace CD_Management.View
                 if (updateSuccess)
                 {
                     MessageBox.Show("Phiếu trả đã được lưu thành công và trạng thái phiếu mượn đã được cập nhật.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //LoadPMComboBox();
                     ClearForm();
+
                 }
                 else
                 {
@@ -149,7 +142,7 @@ namespace CD_Management.View
                 }
 
                 // Làm sạch form
-                
+
             }
             else
             {
@@ -158,8 +151,11 @@ namespace CD_Management.View
         }
         private void ClearForm()
         {
-            txtMaPT.Clear();
+
+            txtMaPT.Text = "";
+            cbbPM.Text = "";
             LoadPMComboBox();
+
         }
 
     }
