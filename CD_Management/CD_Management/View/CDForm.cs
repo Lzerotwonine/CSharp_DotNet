@@ -157,6 +157,8 @@ namespace CD_Management.View
             textBoxDonGiaBan.Clear();
             textBoxTheLoai.Clear();
             textBoxTacGia.Clear();
+
+            LoadBangFromDatabase();
         }
 
         // Sự kiện hiển thị thông tin băng khi chọn dòng trong DataGridView
