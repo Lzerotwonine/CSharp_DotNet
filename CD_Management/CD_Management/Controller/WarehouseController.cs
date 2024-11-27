@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using CD_Management.Model;
@@ -16,6 +16,21 @@ namespace CD_Management.Controller
         {
             transactions = new List<IModel>();
             db = new CDDataContext(); // Khởi tạo DataContext
+        }
+
+        // Tìm kiếm giao dịch
+        public List<IModel> Search(string id = "", string itemId = "", string transactionType = "", string supplierId = "")
+        {
+            var results = transactions.Cast<WarehouseModel>()
+                .Where(t =>
+                    (string.IsNullOrEmpty(id) || t.Id.IndexOf(id, StringComparison.OrdinalIgnoreCase) >= 0) &&
+                    (string.IsNullOrEmpty(itemId) || t.ItemId.IndexOf(itemId, StringComparison.OrdinalIgnoreCase) >= 0) &&
+                    (string.IsNullOrEmpty(transactionType) || t.TransactionType.Equals(transactionType, StringComparison.OrdinalIgnoreCase)) &&
+                    (string.IsNullOrEmpty(supplierId) || t.SupplierId.IndexOf(supplierId, StringComparison.OrdinalIgnoreCase) >= 0)
+                ).Cast<IModel>()
+                .ToList();
+
+            return results;
         }
 
         // Thêm giao dịch
@@ -152,22 +167,5 @@ namespace CD_Management.Controller
             var transaction = model as WarehouseModel;
             return transaction != null && IsExist(transaction.Id);
         }
-
-        // Tìm kiếm giao dịch
-        public List<IModel> Search(string id = "", string itemId = "", string transactionType = "", string supplierId = "")
-        {
-            var results = transactions.Cast<WarehouseModel>()
-                .Where(t =>
-                    (string.IsNullOrEmpty(id) || t.Id.IndexOf(id, StringComparison.OrdinalIgnoreCase) >= 0) &&
-                    (string.IsNullOrEmpty(itemId) || t.ItemId.IndexOf(itemId, StringComparison.OrdinalIgnoreCase) >= 0) &&
-                    (string.IsNullOrEmpty(transactionType) || t.TransactionType.Equals(transactionType, StringComparison.OrdinalIgnoreCase)) &&
-                    (string.IsNullOrEmpty(supplierId) || t.SupplierId.IndexOf(supplierId, StringComparison.OrdinalIgnoreCase) >= 0)
-                ).Cast<IModel>()
-                .ToList();
-
-            return results;
-        }
-
-
     }
 }
