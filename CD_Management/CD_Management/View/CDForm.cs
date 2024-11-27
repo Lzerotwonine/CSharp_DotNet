@@ -127,12 +127,24 @@ namespace CD_Management.View
         // Nút tìm kiếm băng
         private void buttonSearch_Click(object sender, EventArgs e)
         {
+            string maBang = textBoxMaBang.Text;
             string tenBang = textBoxTenBang.Text;
             string tacGia = textBoxTacGia.Text;
             string theLoai = textBoxTheLoai.Text;
-
-            List<IModel> result = bangController.Search(tenBang, tacGia, theLoai);
-            dataGridViewCD.DataSource = result;
+        
+            // Gọi phương thức tìm kiếm
+            List<IModel> result = bangController.Search(
+                string.IsNullOrEmpty(maBang) ? null : maBang,
+                string.IsNullOrEmpty(tenBang) ? null : tenBang,
+                string.IsNullOrEmpty(tacGia) ? null : tacGia,
+                string.IsNullOrEmpty(theLoai) ? null : theLoai
+            );
+        
+            // Ép kiểu từ IModel sang CDModel
+            var cdResults = result.Cast<CDModel>().ToList();
+        
+            // Gán lại DataSource cho DataGridView
+            dataGridViewCD.DataSource = cdResults;
         }
 
         // Nút xóa dữ liệu nhập trên các TextBox
