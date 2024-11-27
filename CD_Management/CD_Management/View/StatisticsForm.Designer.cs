@@ -1,9 +1,16 @@
-﻿namespace CD_Management.View
+namespace CD_Management.View
 {
-    partial class StatisticsForm
+    partial class ReturnRequest
     {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -15,135 +22,139 @@
 
         #region Windows Form Designer generated code
 
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridViewStatistics = new System.Windows.Forms.DataGridView();
-            this.toolStripMenu = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItemProductsInStock = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemOverdueReceipts = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemBorrowingCustomers = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemBorrowedProducts = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.comboBoxSearch = new System.Windows.Forms.ComboBox();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.groupBoxDetails = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStatistics)).BeginInit();
-            this.toolStripMenu.SuspendLayout();
-            this.groupBoxDetails.SuspendLayout();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtMaPT = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbbPM = new System.Windows.Forms.ComboBox();
+            this.dataGridReturn = new System.Windows.Forms.DataGridView();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.titleMain = new System.Windows.Forms.Label();
+            this.groupBoxReturnDetails = new System.Windows.Forms.GroupBox();
+            this.groupBoxTools = new System.Windows.Forms.GroupBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridReturn)).BeginInit();
+            this.groupBoxReturnDetails.SuspendLayout();
+            this.groupBoxTools.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridViewStatistics
+            // label1
             // 
-            this.dataGridViewStatistics.AllowUserToAddRows = false;
-            this.dataGridViewStatistics.AllowUserToDeleteRows = false;
-            this.dataGridViewStatistics.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewStatistics.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewStatistics.Location = new System.Drawing.Point(12, 31);
-            this.dataGridViewStatistics.Name = "dataGridViewStatistics";
-            this.dataGridViewStatistics.RowHeadersWidth = 51;
-            this.dataGridViewStatistics.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewStatistics.Size = new System.Drawing.Size(760, 400);
-            this.dataGridViewStatistics.TabIndex = 0;
-            this.dataGridViewStatistics.SelectionChanged += new System.EventHandler(this.dataGridViewStatistics_SelectionChanged);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(68, 33);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 16);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Mã phiếu trả";
             // 
-            // toolStripMenu
+            // txtMaPT
             // 
-            this.toolStripMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStripMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemProductsInStock,
-            this.toolStripMenuItemOverdueReceipts,
-            this.toolStripMenuItemBorrowingCustomers,
-            this.toolStripMenuItemBorrowedProducts});
-            this.toolStripMenu.Location = new System.Drawing.Point(0, 0);
-            this.toolStripMenu.Name = "toolStripMenu";
-            this.toolStripMenu.Size = new System.Drawing.Size(784, 28);
-            this.toolStripMenu.TabIndex = 1;
-            this.toolStripMenu.Text = "menuStrip1";
+            this.txtMaPT.Location = new System.Drawing.Point(220, 30);
+            this.txtMaPT.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMaPT.Name = "txtMaPT";
+            this.txtMaPT.Size = new System.Drawing.Size(200, 22);
+            this.txtMaPT.TabIndex = 1;
             // 
-            // toolStripMenuItemProductsInStock
+            // label2
             // 
-            this.toolStripMenuItemProductsInStock.Name = "toolStripMenuItemProductsInStock";
-            this.toolStripMenuItemProductsInStock.Size = new System.Drawing.Size(157, 24);
-            this.toolStripMenuItemProductsInStock.Text = "Sản phẩm trong kho";
-            this.toolStripMenuItemProductsInStock.Click += new System.EventHandler(this.toolStripMenuItemProductsInStock_Click);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(68, 63);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(98, 16);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Mã phiếu mượn";
             // 
-            // toolStripMenuItemOverdueReceipts
+            // cbbPM
             // 
-            this.toolStripMenuItemOverdueReceipts.Name = "toolStripMenuItemOverdueReceipts";
-            this.toolStripMenuItemOverdueReceipts.Size = new System.Drawing.Size(138, 24);
-            this.toolStripMenuItemOverdueReceipts.Text = "Phiếu quá hạn trả";
-            this.toolStripMenuItemOverdueReceipts.Click += new System.EventHandler(this.toolStripMenuItemOverdueReceipts_Click);
+            this.cbbPM.FormattingEnabled = true;
+            this.cbbPM.Location = new System.Drawing.Point(220, 58);
+            this.cbbPM.Margin = new System.Windows.Forms.Padding(4);
+            this.cbbPM.Name = "cbbPM";
+            this.cbbPM.Size = new System.Drawing.Size(200, 24);
+            this.cbbPM.TabIndex = 3;
+            this.cbbPM.SelectedIndexChanged += new System.EventHandler(this.cbbPM_SelectedIndexChanged);
             // 
-            // toolStripMenuItemBorrowingCustomers
+            // dataGridReturn
             // 
-            this.toolStripMenuItemBorrowingCustomers.Name = "toolStripMenuItemBorrowingCustomers";
-            this.toolStripMenuItemBorrowingCustomers.Size = new System.Drawing.Size(164, 24);
-            this.toolStripMenuItemBorrowingCustomers.Text = "Khách hàng đã mượn";
-            this.toolStripMenuItemBorrowingCustomers.Click += new System.EventHandler(this.toolStripMenuItemBorrowingCustomers_Click);
+            this.dataGridReturn.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridReturn.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridReturn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridReturn.Location = new System.Drawing.Point(12, 164);
+            this.dataGridReturn.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridReturn.Name = "dataGridReturn";
+            this.dataGridReturn.RowHeadersWidth = 51;
+            this.dataGridReturn.Size = new System.Drawing.Size(688, 237);
+            this.dataGridReturn.TabIndex = 6;
             // 
-            // toolStripMenuItemBorrowedProducts
+            // btnSave
             // 
-            this.toolStripMenuItemBorrowedProducts.Name = "toolStripMenuItemBorrowedProducts";
-            this.toolStripMenuItemBorrowedProducts.Size = new System.Drawing.Size(153, 24);
-            this.toolStripMenuItemBorrowedProducts.Text = "Sản phẩm đã mượn";
-            this.toolStripMenuItemBorrowedProducts.Click += new System.EventHandler(this.toolStripMenuItemBorrowedProducts_Click);
+            this.btnSave.Location = new System.Drawing.Point(52, 33);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(100, 40);
+            this.btnSave.TabIndex = 7;
+            this.btnSave.Text = "Lưu";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // btnSearch
+            // titleMain
             // 
-            this.btnSearch.Location = new System.Drawing.Point(326, 34);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(100, 40);
-            this.btnSearch.TabIndex = 10;
-            this.btnSearch.Text = "Tìm kiếm";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.titleMain.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.titleMain.AutoSize = true;
+            this.titleMain.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleMain.Location = new System.Drawing.Point(256, 19);
+            this.titleMain.Name = "titleMain";
+            this.titleMain.Size = new System.Drawing.Size(176, 35);
+            this.titleMain.TabIndex = 14;
+            this.titleMain.Text = "PHIẾU TRẢ";
             // 
-            // comboBoxSearch
+            // groupBoxReturnDetails
             // 
-            this.comboBoxSearch.FormattingEnabled = true;
-            this.comboBoxSearch.Location = new System.Drawing.Point(174, 43);
-            this.comboBoxSearch.Name = "comboBoxSearch";
-            this.comboBoxSearch.Size = new System.Drawing.Size(128, 24);
-            this.comboBoxSearch.TabIndex = 11;
+            this.groupBoxReturnDetails.Controls.Add(this.label1);
+            this.groupBoxReturnDetails.Controls.Add(this.txtMaPT);
+            this.groupBoxReturnDetails.Controls.Add(this.label2);
+            this.groupBoxReturnDetails.Controls.Add(this.cbbPM);
+            this.groupBoxReturnDetails.Location = new System.Drawing.Point(12, 57);
+            this.groupBoxReturnDetails.Name = "groupBoxReturnDetails";
+            this.groupBoxReturnDetails.Size = new System.Drawing.Size(482, 100);
+            this.groupBoxReturnDetails.TabIndex = 15;
+            this.groupBoxReturnDetails.TabStop = false;
+            this.groupBoxReturnDetails.Text = "Thông tin phiếu trả";
             // 
-            // btnDelete
+            // groupBoxTools
             // 
-            this.btnDelete.Location = new System.Drawing.Point(432, 34);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(100, 40);
-            this.btnDelete.TabIndex = 12;
-            this.btnDelete.Text = "Xoá";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.groupBoxTools.Controls.Add(this.btnSave);
+            this.groupBoxTools.Location = new System.Drawing.Point(500, 57);
+            this.groupBoxTools.Name = "groupBoxTools";
+            this.groupBoxTools.Size = new System.Drawing.Size(200, 100);
+            this.groupBoxTools.TabIndex = 16;
+            this.groupBoxTools.TabStop = false;
+            this.groupBoxTools.Text = "Công cụ";
             // 
-            // groupBoxDetails
+            // ReturnRequest
             // 
-            this.groupBoxDetails.Controls.Add(this.comboBoxSearch);
-            this.groupBoxDetails.Controls.Add(this.btnDelete);
-            this.groupBoxDetails.Controls.Add(this.btnSearch);
-            this.groupBoxDetails.Location = new System.Drawing.Point(12, 437);
-            this.groupBoxDetails.Name = "groupBoxDetails";
-            this.groupBoxDetails.Size = new System.Drawing.Size(760, 103);
-            this.groupBoxDetails.TabIndex = 13;
-            this.groupBoxDetails.TabStop = false;
-            this.groupBoxDetails.Text = "Công cụ";
-            // 
-            // StatisticsForm
-            // 
-            this.ClientSize = new System.Drawing.Size(784, 569);
-            this.ControlBox = false;
-            this.Controls.Add(this.groupBoxDetails);
-            this.Controls.Add(this.dataGridViewStatistics);
-            this.Controls.Add(this.toolStripMenu);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(714, 416);
+            this.Controls.Add(this.groupBoxTools);
+            this.Controls.Add(this.groupBoxReturnDetails);
+            this.Controls.Add(this.titleMain);
+            this.Controls.Add(this.dataGridReturn);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "ReturnRequest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.MainMenuStrip = this.toolStripMenu;
-            this.Name = "StatisticsForm";
-            this.Text = "Thống kê";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStatistics)).EndInit();
-            this.toolStripMenu.ResumeLayout(false);
-            this.toolStripMenu.PerformLayout();
-            this.groupBoxDetails.ResumeLayout(false);
+            this.Text = "ReturnRequest";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridReturn)).EndInit();
+            this.groupBoxReturnDetails.ResumeLayout(false);
+            this.groupBoxReturnDetails.PerformLayout();
+            this.groupBoxTools.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,15 +162,14 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridViewStatistics;
-        private System.Windows.Forms.MenuStrip toolStripMenu;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemProductsInStock;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOverdueReceipts;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemBorrowingCustomers;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemBorrowedProducts;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.ComboBox comboBoxSearch;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.GroupBox groupBoxDetails;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtMaPT;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbbPM;
+        private System.Windows.Forms.DataGridView dataGridReturn;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label titleMain;
+        private System.Windows.Forms.GroupBox groupBoxReturnDetails;
+        private System.Windows.Forms.GroupBox groupBoxTools;
     }
 }
