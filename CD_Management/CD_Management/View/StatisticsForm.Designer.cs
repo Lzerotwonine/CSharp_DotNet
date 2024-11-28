@@ -24,7 +24,6 @@ namespace CD_Management.View
             this.toolStripMenuItemBorrowingCustomers = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemBorrowedProducts = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.groupBoxDetails = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
@@ -100,22 +99,11 @@ namespace CD_Management.View
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(432, 34);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(100, 40);
-            this.btnDelete.TabIndex = 12;
-            this.btnDelete.Text = "Xoá";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
             // groupBoxDetails
             // 
             this.groupBoxDetails.Controls.Add(this.label1);
             this.groupBoxDetails.Controls.Add(this.textBoxSearch);
             this.groupBoxDetails.Controls.Add(this.btnExportToExcel);
-            this.groupBoxDetails.Controls.Add(this.btnDelete);
             this.groupBoxDetails.Controls.Add(this.btnSearch);
             this.groupBoxDetails.Location = new System.Drawing.Point(12, 437);
             this.groupBoxDetails.Name = "groupBoxDetails";
@@ -142,7 +130,7 @@ namespace CD_Management.View
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(538, 34);
+            this.btnExportToExcel.Location = new System.Drawing.Point(432, 34);
             this.btnExportToExcel.Name = "btnExportToExcel";
             this.btnExportToExcel.Size = new System.Drawing.Size(122, 40);
             this.btnExportToExcel.TabIndex = 5;
@@ -181,7 +169,6 @@ namespace CD_Management.View
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemBorrowingCustomers;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemBorrowedProducts;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.GroupBox groupBoxDetails;
 
         private System.Windows.Forms.Button btnExportToExcel;
