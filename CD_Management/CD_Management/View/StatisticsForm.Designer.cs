@@ -13,7 +13,7 @@ namespace CD_Management.View
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+            #region Windows Form Designer generated code
 
         private void InitializeComponent()
         {
@@ -24,9 +24,9 @@ namespace CD_Management.View
             this.toolStripMenuItemBorrowingCustomers = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemBorrowedProducts = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.comboBoxSearch = new System.Windows.Forms.ComboBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.groupBoxDetails = new System.Windows.Forms.GroupBox();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.btnExportToExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStatistics)).BeginInit();
             this.toolStripMenu.SuspendLayout();
@@ -99,14 +99,6 @@ namespace CD_Management.View
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // comboBoxSearch
-            // 
-            this.comboBoxSearch.FormattingEnabled = true;
-            this.comboBoxSearch.Location = new System.Drawing.Point(174, 43);
-            this.comboBoxSearch.Name = "comboBoxSearch";
-            this.comboBoxSearch.Size = new System.Drawing.Size(128, 21);
-            this.comboBoxSearch.TabIndex = 11;
-            // 
             // btnDelete
             // 
             this.btnDelete.Location = new System.Drawing.Point(432, 34);
@@ -119,8 +111,8 @@ namespace CD_Management.View
             // 
             // groupBoxDetails
             // 
+            this.groupBoxDetails.Controls.Add(this.textBoxSearch);
             this.groupBoxDetails.Controls.Add(this.btnExportToExcel);
-            this.groupBoxDetails.Controls.Add(this.comboBoxSearch);
             this.groupBoxDetails.Controls.Add(this.btnDelete);
             this.groupBoxDetails.Controls.Add(this.btnSearch);
             this.groupBoxDetails.Location = new System.Drawing.Point(12, 437);
@@ -129,6 +121,13 @@ namespace CD_Management.View
             this.groupBoxDetails.TabIndex = 13;
             this.groupBoxDetails.TabStop = false;
             this.groupBoxDetails.Text = "Công cụ";
+            // 
+            // textBoxSearch
+            // 
+            this.textBoxSearch.Location = new System.Drawing.Point(175, 45);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(128, 20);
+            this.textBoxSearch.TabIndex = 14;
             // 
             // btnExportToExcel
             // 
@@ -156,6 +155,7 @@ namespace CD_Management.View
             this.toolStripMenu.ResumeLayout(false);
             this.toolStripMenu.PerformLayout();
             this.groupBoxDetails.ResumeLayout(false);
+            this.groupBoxDetails.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,10 +170,10 @@ namespace CD_Management.View
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemBorrowingCustomers;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemBorrowedProducts;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.ComboBox comboBoxSearch;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.GroupBox groupBoxDetails;
 
         private System.Windows.Forms.Button btnExportToExcel;
+        private System.Windows.Forms.TextBox textBoxSearch;
     }
 }

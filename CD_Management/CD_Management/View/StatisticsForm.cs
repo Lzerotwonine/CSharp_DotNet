@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -258,13 +258,13 @@ namespace CD_Management.View
         {
             if (currentStatistics == null || !currentStatistics.Any())
             {
-                comboBoxSearch.DataSource = null; // Xóa dữ liệu trong ComboBox
+                textBoxSearch.Text = ""; // Xóa dữ liệu trong TextBox
                 return;
             }
 
             List<string> keys = new List<string>();
 
-            // Dựa trên loại thống kê đang chọn, cập nhật danh sách khóa cho ComboBox
+            // Dựa trên loại thống kê đang chọn, cập nhật danh sách khóa cho TextBox
             if (currentStatisticType == "ProductsInStock")
             {
                 keys = currentStatistics
@@ -298,46 +298,54 @@ namespace CD_Management.View
                     .ToList();
             }
 
-            // Cập nhật ComboBox với các khóa tìm được
+            // Cập nhật TextBox với các khóa tìm được
             if (keys.Any())
             {
-                comboBoxSearch.DataSource = keys;
-                comboBoxSearch.SelectedIndex = -1; // Không chọn gì ban đầu
+                textBoxSearch.Text = keys.FirstOrDefault(); // Tự động điền dữ liệu đầu tiên vào TextBox
             }
             else
             {
-                comboBoxSearch.DataSource = null; // Xóa dữ liệu nếu không có Key
+                textBoxSearch.Text = ""; // Xóa dữ liệu nếu không có Key
             }
         }
 
+
+
+        private int currentSearchIndex = -1; // Chỉ số hiện tại khi tìm kiếm
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            var selectedKey = comboBoxSearch.SelectedItem?.ToString();
-            if (!string.IsNullOrEmpty(selectedKey))
+            var searchTerm = textBoxSearch.Text.Trim(); // Lấy giá trị từ TextBox tìm kiếm
+            if (string.IsNullOrEmpty(searchTerm))
             {
-                // Tìm hàng có mã tương ứng
-                var row = dataGridViewStatistics.Rows
-                          .Cast<DataGridViewRow>()
-                          .FirstOrDefault(r => ((StatisticsModel)r.DataBoundItem).Key == selectedKey);
+                MessageBox.Show("Vui lòng nhập từ khóa tìm kiếm.");
+                return;
+            }
 
-                if (row != null)
-                {
-                    dataGridViewStatistics.ClearSelection();
-                    row.Selected = true;
-                    dataGridViewStatistics.FirstDisplayedScrollingRowIndex = row.Index;
-                    MessageBox.Show($"Đã tìm thấy mã {selectedKey}.");
-                }
-                else
-                {
-                    MessageBox.Show($"Không tìm thấy mã {selectedKey}.");
-                }
+            // Tìm tất cả các dòng có giá trị tương ứng
+            var matchingRows = dataGridViewStatistics.Rows.Cast<DataGridViewRow>()
+                .Where(r => ((StatisticsModel)r.DataBoundItem).Key.Contains(searchTerm)) // Tìm các phần tử có chứa từ khóa
+                .ToList();
+
+            if (matchingRows.Any())
+            {
+                // Nếu có kết quả tìm thấy, di chuyển đến phần tử tiếp theo
+                currentSearchIndex = (currentSearchIndex + 1) % matchingRows.Count; // Chuyển sang phần tử tiếp theo
+
+                var selectedRow = matchingRows[currentSearchIndex];
+                dataGridViewStatistics.ClearSelection();
+                selectedRow.Selected = true;
+                dataGridViewStatistics.FirstDisplayedScrollingRowIndex = selectedRow.Index; // Cuộn đến dòng đã chọn
+
+                //MessageBox.Show($"Đã tìm thấy: {((StatisticsModel)selectedRow.DataBoundItem).Key}");
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn một mã để tìm kiếm.");
+                MessageBox.Show("Không tìm thấy kết quả.");
             }
         }
+
+
 
 
         private void btnExportToExcel_Click(object sender, EventArgs e)
