@@ -13,7 +13,7 @@ namespace CD_Management.View
             base.Dispose(disposing);
         }
 
-            #region Windows Form Designer generated code
+        #region Windows Form Designer generated code
 
         private void InitializeComponent()
         {
@@ -26,6 +26,7 @@ namespace CD_Management.View
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.groupBoxDetails = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.btnExportToExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStatistics)).BeginInit();
@@ -111,6 +112,7 @@ namespace CD_Management.View
             // 
             // groupBoxDetails
             // 
+            this.groupBoxDetails.Controls.Add(this.label1);
             this.groupBoxDetails.Controls.Add(this.textBoxSearch);
             this.groupBoxDetails.Controls.Add(this.btnExportToExcel);
             this.groupBoxDetails.Controls.Add(this.btnDelete);
@@ -121,6 +123,15 @@ namespace CD_Management.View
             this.groupBoxDetails.TabIndex = 13;
             this.groupBoxDetails.TabStop = false;
             this.groupBoxDetails.Text = "Công cụ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(172, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(86, 13);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Vui lòng nhập ID";
             // 
             // textBoxSearch
             // 
@@ -175,5 +186,6 @@ namespace CD_Management.View
 
         private System.Windows.Forms.Button btnExportToExcel;
         private System.Windows.Forms.TextBox textBoxSearch;
+        private System.Windows.Forms.Label label1;
     }
 }
