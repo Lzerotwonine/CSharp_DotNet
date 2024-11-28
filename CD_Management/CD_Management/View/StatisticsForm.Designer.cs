@@ -27,6 +27,7 @@ namespace CD_Management.View
             this.comboBoxSearch = new System.Windows.Forms.ComboBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.groupBoxDetails = new System.Windows.Forms.GroupBox();
+            this.btnExportToExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStatistics)).BeginInit();
             this.toolStripMenu.SuspendLayout();
             this.groupBoxDetails.SuspendLayout();
@@ -56,35 +57,35 @@ namespace CD_Management.View
             this.toolStripMenuItemBorrowedProducts});
             this.toolStripMenu.Location = new System.Drawing.Point(0, 0);
             this.toolStripMenu.Name = "toolStripMenu";
-            this.toolStripMenu.Size = new System.Drawing.Size(784, 28);
+            this.toolStripMenu.Size = new System.Drawing.Size(784, 24);
             this.toolStripMenu.TabIndex = 1;
             this.toolStripMenu.Text = "menuStrip1";
             // 
             // toolStripMenuItemProductsInStock
             // 
             this.toolStripMenuItemProductsInStock.Name = "toolStripMenuItemProductsInStock";
-            this.toolStripMenuItemProductsInStock.Size = new System.Drawing.Size(157, 24);
+            this.toolStripMenuItemProductsInStock.Size = new System.Drawing.Size(127, 20);
             this.toolStripMenuItemProductsInStock.Text = "Sản phẩm trong kho";
             this.toolStripMenuItemProductsInStock.Click += new System.EventHandler(this.toolStripMenuItemProductsInStock_Click);
             // 
             // toolStripMenuItemOverdueReceipts
             // 
             this.toolStripMenuItemOverdueReceipts.Name = "toolStripMenuItemOverdueReceipts";
-            this.toolStripMenuItemOverdueReceipts.Size = new System.Drawing.Size(138, 24);
+            this.toolStripMenuItemOverdueReceipts.Size = new System.Drawing.Size(112, 20);
             this.toolStripMenuItemOverdueReceipts.Text = "Phiếu quá hạn trả";
             this.toolStripMenuItemOverdueReceipts.Click += new System.EventHandler(this.toolStripMenuItemOverdueReceipts_Click);
             // 
             // toolStripMenuItemBorrowingCustomers
             // 
             this.toolStripMenuItemBorrowingCustomers.Name = "toolStripMenuItemBorrowingCustomers";
-            this.toolStripMenuItemBorrowingCustomers.Size = new System.Drawing.Size(164, 24);
+            this.toolStripMenuItemBorrowingCustomers.Size = new System.Drawing.Size(133, 20);
             this.toolStripMenuItemBorrowingCustomers.Text = "Khách hàng đã mượn";
             this.toolStripMenuItemBorrowingCustomers.Click += new System.EventHandler(this.toolStripMenuItemBorrowingCustomers_Click);
             // 
             // toolStripMenuItemBorrowedProducts
             // 
             this.toolStripMenuItemBorrowedProducts.Name = "toolStripMenuItemBorrowedProducts";
-            this.toolStripMenuItemBorrowedProducts.Size = new System.Drawing.Size(153, 24);
+            this.toolStripMenuItemBorrowedProducts.Size = new System.Drawing.Size(123, 20);
             this.toolStripMenuItemBorrowedProducts.Text = "Sản phẩm đã mượn";
             this.toolStripMenuItemBorrowedProducts.Click += new System.EventHandler(this.toolStripMenuItemBorrowedProducts_Click);
             // 
@@ -103,7 +104,7 @@ namespace CD_Management.View
             this.comboBoxSearch.FormattingEnabled = true;
             this.comboBoxSearch.Location = new System.Drawing.Point(174, 43);
             this.comboBoxSearch.Name = "comboBoxSearch";
-            this.comboBoxSearch.Size = new System.Drawing.Size(128, 24);
+            this.comboBoxSearch.Size = new System.Drawing.Size(128, 21);
             this.comboBoxSearch.TabIndex = 11;
             // 
             // btnDelete
@@ -118,6 +119,7 @@ namespace CD_Management.View
             // 
             // groupBoxDetails
             // 
+            this.groupBoxDetails.Controls.Add(this.btnExportToExcel);
             this.groupBoxDetails.Controls.Add(this.comboBoxSearch);
             this.groupBoxDetails.Controls.Add(this.btnDelete);
             this.groupBoxDetails.Controls.Add(this.btnSearch);
@@ -128,6 +130,16 @@ namespace CD_Management.View
             this.groupBoxDetails.TabStop = false;
             this.groupBoxDetails.Text = "Công cụ";
             // 
+            // btnExportToExcel
+            // 
+            this.btnExportToExcel.Location = new System.Drawing.Point(538, 34);
+            this.btnExportToExcel.Name = "btnExportToExcel";
+            this.btnExportToExcel.Size = new System.Drawing.Size(122, 40);
+            this.btnExportToExcel.TabIndex = 5;
+            this.btnExportToExcel.Text = "Xuất ra Excel";
+            this.btnExportToExcel.UseVisualStyleBackColor = true;
+            this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
+            // 
             // StatisticsForm
             // 
             this.ClientSize = new System.Drawing.Size(784, 569);
@@ -136,9 +148,9 @@ namespace CD_Management.View
             this.Controls.Add(this.dataGridViewStatistics);
             this.Controls.Add(this.toolStripMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.MainMenuStrip = this.toolStripMenu;
             this.Name = "StatisticsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thống kê";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStatistics)).EndInit();
             this.toolStripMenu.ResumeLayout(false);
@@ -147,27 +159,6 @@ namespace CD_Management.View
             this.ResumeLayout(false);
             this.PerformLayout();
 
-
-            
-            // 
-            // btnExportToExcel
-            // 
-            this.btnExportToExcel = new System.Windows.Forms.Button();
-            this.btnExportToExcel.Location = new System.Drawing.Point(700, 500); // Điều chỉnh vị trí theo nhu cầu
-            this.btnExportToExcel.Name = "btnExportToExcel";
-            this.btnExportToExcel.Size = new System.Drawing.Size(120, 30);
-            this.btnExportToExcel.TabIndex = 5;
-            this.btnExportToExcel.Text = "Xuất ra Excel";
-            this.btnExportToExcel.UseVisualStyleBackColor = true;
-            this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
-            this.Controls.Add(this.btnExportToExcel);
-
-            // 
-            // Thêm các nút vào Form
-            // 
-
-
-            this.Controls.Add(this.btnExportToExcel);
         }
 
         #endregion
@@ -182,7 +173,7 @@ namespace CD_Management.View
         private System.Windows.Forms.ComboBox comboBoxSearch;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.GroupBox groupBoxDetails;
-        
+
         private System.Windows.Forms.Button btnExportToExcel;
     }
 }
