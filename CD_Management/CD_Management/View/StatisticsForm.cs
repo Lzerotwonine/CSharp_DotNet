@@ -4,6 +4,11 @@ using System.Linq;
 using System.Windows.Forms;
 using CD_Management.Controller;
 using CD_Management.Model;
+using System.Text;
+using System.IO;
+using ClosedXML.Excel;
+
+
 
 namespace CD_Management.View
 {
@@ -11,6 +16,7 @@ namespace CD_Management.View
     {
         private StatisticsController statisticsController;
         private List<IModel> currentStatistics;
+        private string currentStatisticType = "";
 
         public StatisticsForm()
         {
@@ -95,6 +101,7 @@ namespace CD_Management.View
         {
             if (statisticsController.GetProductsInStock())
             {
+                currentStatisticType = "ProductsInStock"; // Thiết lập loại thống kê
                 DisplayData("Sản phẩm còn trong kho", new List<(string, string)>
                 {
                     ("Mã Băng", "Key"),
@@ -121,6 +128,7 @@ namespace CD_Management.View
         {
             if (statisticsController.GetOverdueReceipts())
             {
+                currentStatisticType = "OverdueReceipts"; // Thiết lập loại thống kê
                 DisplayData("Phiếu quá hạn trả", new List<(string, string)>
                 {
                     ("Mã Phiếu", "Key"),
@@ -147,6 +155,7 @@ namespace CD_Management.View
         {
             if (statisticsController.GetBorrowingCustomers())
             {
+                currentStatisticType = "BorrowingCustomers"; // Thiết lập loại thống kê
                 DisplayData("Khách hàng đã mượn sản phẩm", new List<(string, string)>
                 {
                     ("Mã Khách", "Key"),
@@ -173,6 +182,7 @@ namespace CD_Management.View
         {
             if (statisticsController.GetBorrowedProducts())
             {
+                currentStatisticType = "BorrowedProducts"; // Thiết lập loại thống kê
                 DisplayData("Sản phẩm đã mượn", new List<(string, string)>
                 {
                     ("Mã Phiếu", "ReceiptID"),
@@ -244,7 +254,6 @@ namespace CD_Management.View
                 MessageBox.Show("Vui lòng chọn ít nhất một dòng để xóa.");
             }
         }
-
         private void UpdateSearchComboBox()
         {
             if (currentStatistics == null || !currentStatistics.Any())
@@ -253,12 +262,43 @@ namespace CD_Management.View
                 return;
             }
 
-            var keys = currentStatistics
-                        .OfType<StatisticsModel>() // Lọc chỉ các đối tượng StatisticsModel
-                        .Select(stat => stat.Key) // Lấy thuộc tính Key
-                        .Distinct()
-                        .ToList();
+            List<string> keys = new List<string>();
 
+            // Dựa trên loại thống kê đang chọn, cập nhật danh sách khóa cho ComboBox
+            if (currentStatisticType == "ProductsInStock")
+            {
+                keys = currentStatistics
+                    .OfType<StatisticsModel>()
+                    .Select(stat => stat.Key) // Mã Băng
+                    .Distinct()
+                    .ToList();
+            }
+            else if (currentStatisticType == "OverdueReceipts")
+            {
+                keys = currentStatistics
+                    .OfType<StatisticsModel>()
+                    .Select(stat => stat.CustomerID) // Mã Khách
+                    .Distinct()
+                    .ToList();
+            }
+            else if (currentStatisticType == "BorrowingCustomers")
+            {
+                keys = currentStatistics
+                    .OfType<StatisticsModel>()
+                    .Select(stat => stat.Key) // Mã Khách
+                    .Distinct()
+                    .ToList();
+            }
+            else if (currentStatisticType == "BorrowedProducts")
+            {
+                keys = currentStatistics
+                    .OfType<StatisticsModel>()
+                    .Select(stat => stat.ReceiptID) // Mã Phiếu
+                    .Distinct()
+                    .ToList();
+            }
+
+            // Cập nhật ComboBox với các khóa tìm được
             if (keys.Any())
             {
                 comboBoxSearch.DataSource = keys;
@@ -269,6 +309,7 @@ namespace CD_Management.View
                 comboBoxSearch.DataSource = null; // Xóa dữ liệu nếu không có Key
             }
         }
+
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -297,6 +338,52 @@ namespace CD_Management.View
                 MessageBox.Show("Vui lòng chọn một mã để tìm kiếm.");
             }
         }
+
+
+        private void btnExportToExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Tạo workbook mới
+                using (var workbook = new XLWorkbook())
+                {
+                    var worksheet = workbook.Worksheets.Add("Thống kê");
+
+                    // Thêm tiêu đề cột vào Excel
+                    for (int i = 0; i < dataGridViewStatistics.Columns.Count; i++)
+                    {
+                        worksheet.Cell(1, i + 1).Value = dataGridViewStatistics.Columns[i].HeaderText;
+                    }
+
+                    // Thêm dữ liệu từ DataGridView vào Excel
+                    for (int i = 0; i < dataGridViewStatistics.Rows.Count; i++)
+                    {
+                        for (int j = 0; j < dataGridViewStatistics.Columns.Count; j++)
+                        {
+                            worksheet.Cell(i + 2, j + 1).Value =
+                                dataGridViewStatistics.Rows[i].Cells[j].Value?.ToString() ?? "";
+                        }
+                    }
+
+                    // Lưu file Excel
+                    SaveFileDialog saveDialog = new SaveFileDialog();
+                    saveDialog.Filter = "Excel Files|*.xlsx";
+                    saveDialog.Title = "Lưu dữ liệu vào Excel";
+                    saveDialog.FileName = "ThongKe_" + DateTime.Now.ToString("yyyyMMdd_HHmmss");
+
+                    if (saveDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        workbook.SaveAs(saveDialog.FileName);
+                        MessageBox.Show("Dữ liệu đã được xuất ra Excel!");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi xuất dữ liệu ra Excel: {ex.Message}");
+            }
+        }
+
 
     }
 }

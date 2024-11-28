@@ -147,6 +147,27 @@ namespace CD_Management.View
             this.ResumeLayout(false);
             this.PerformLayout();
 
+
+            
+            // 
+            // btnExportToExcel
+            // 
+            this.btnExportToExcel = new System.Windows.Forms.Button();
+            this.btnExportToExcel.Location = new System.Drawing.Point(700, 500); // Điều chỉnh vị trí theo nhu cầu
+            this.btnExportToExcel.Name = "btnExportToExcel";
+            this.btnExportToExcel.Size = new System.Drawing.Size(120, 30);
+            this.btnExportToExcel.TabIndex = 5;
+            this.btnExportToExcel.Text = "Xuất ra Excel";
+            this.btnExportToExcel.UseVisualStyleBackColor = true;
+            this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
+            this.Controls.Add(this.btnExportToExcel);
+
+            // 
+            // Thêm các nút vào Form
+            // 
+
+
+            this.Controls.Add(this.btnExportToExcel);
         }
 
         #endregion
@@ -161,5 +182,7 @@ namespace CD_Management.View
         private System.Windows.Forms.ComboBox comboBoxSearch;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.GroupBox groupBoxDetails;
+        
+        private System.Windows.Forms.Button btnExportToExcel;
     }
 }
