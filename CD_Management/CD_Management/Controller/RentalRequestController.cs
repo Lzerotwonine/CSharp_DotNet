@@ -11,7 +11,7 @@ namespace CD_Management.Controller
 {
     internal class RentalRequestController : IController
     {
-        private readonly string connectionString = "Data Source=DESKTOP-GF6DKHM;SQLEXPRESS;Initial Catalog=CD_Management;Integrated Security=True";
+        private readonly string connectionString = "Data Source=DESKTOP-GF6DKHM;Initial Catalog=CD_Management;Integrated Security=True";
         public List<IModel> Items { get; private set; }
 
         public RentalRequestController()
