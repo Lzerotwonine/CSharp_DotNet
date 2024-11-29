@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 namespace CD_Management.Model
@@ -8,16 +8,16 @@ namespace CD_Management.Model
         public string MaHDTra { get; set; }
         public string MaHDMuon { get; set; }
         public DateTime NgayTraHang { get; set; }
-        public float TongTien { get; set; }
+        public float TongTienTra { get; set; }
         public ReturnRequestModel() { }
 
         // Constructor với tham số
-        public ReturnRequestModel(string maHDTra, string maHDMuon, DateTime ngayTraHang, float tongTien)
+        public ReturnRequestModel(string maHDTra, string maHDMuon, DateTime ngayTraHang, float tongTienTra)
         {
             MaHDTra = maHDTra;
             MaHDMuon = maHDMuon;
             NgayTraHang = ngayTraHang;
-            TongTien = tongTien;
+            TongTienTra = tongTienTra;
         }
 
         public bool isValidate()
