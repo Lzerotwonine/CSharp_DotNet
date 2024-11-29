@@ -59,7 +59,7 @@ namespace CD_Management.Controller
         {
             var customers = db.Khaches
                 .Join(db.PhieuMuons, k => k.MaKhach, pm => pm.MaKhach, (k, pm) => new { k, pm })
-                .Where(x => x.pm.HoatDong)  // Lọc khách hàng đang mượn
+                //.Where(x => x.pm.HoatDong)  // Lọc khách hàng đang mượn
                 .Distinct()
                 .Select(x => new StatisticsModel
                 {
