@@ -39,7 +39,7 @@ namespace CD_Management.View
             this.dataGridViewStatistics.AllowUserToDeleteRows = false;
             this.dataGridViewStatistics.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewStatistics.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewStatistics.Location = new System.Drawing.Point(12, 31);
+            this.dataGridViewStatistics.Location = new System.Drawing.Point(12, 48);
             this.dataGridViewStatistics.Name = "dataGridViewStatistics";
             this.dataGridViewStatistics.RowHeadersWidth = 51;
             this.dataGridViewStatistics.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -57,35 +57,35 @@ namespace CD_Management.View
             this.toolStripMenuItemBorrowedProducts});
             this.toolStripMenu.Location = new System.Drawing.Point(0, 0);
             this.toolStripMenu.Name = "toolStripMenu";
-            this.toolStripMenu.Size = new System.Drawing.Size(784, 24);
+            this.toolStripMenu.Size = new System.Drawing.Size(784, 28);
             this.toolStripMenu.TabIndex = 1;
             this.toolStripMenu.Text = "menuStrip1";
             // 
             // toolStripMenuItemProductsInStock
             // 
             this.toolStripMenuItemProductsInStock.Name = "toolStripMenuItemProductsInStock";
-            this.toolStripMenuItemProductsInStock.Size = new System.Drawing.Size(127, 20);
+            this.toolStripMenuItemProductsInStock.Size = new System.Drawing.Size(157, 24);
             this.toolStripMenuItemProductsInStock.Text = "Sản phẩm trong kho";
             this.toolStripMenuItemProductsInStock.Click += new System.EventHandler(this.toolStripMenuItemProductsInStock_Click);
             // 
             // toolStripMenuItemOverdueReceipts
             // 
             this.toolStripMenuItemOverdueReceipts.Name = "toolStripMenuItemOverdueReceipts";
-            this.toolStripMenuItemOverdueReceipts.Size = new System.Drawing.Size(112, 20);
+            this.toolStripMenuItemOverdueReceipts.Size = new System.Drawing.Size(138, 24);
             this.toolStripMenuItemOverdueReceipts.Text = "Phiếu quá hạn trả";
             this.toolStripMenuItemOverdueReceipts.Click += new System.EventHandler(this.toolStripMenuItemOverdueReceipts_Click);
             // 
             // toolStripMenuItemBorrowingCustomers
             // 
             this.toolStripMenuItemBorrowingCustomers.Name = "toolStripMenuItemBorrowingCustomers";
-            this.toolStripMenuItemBorrowingCustomers.Size = new System.Drawing.Size(133, 20);
+            this.toolStripMenuItemBorrowingCustomers.Size = new System.Drawing.Size(164, 24);
             this.toolStripMenuItemBorrowingCustomers.Text = "Khách hàng đã mượn";
             this.toolStripMenuItemBorrowingCustomers.Click += new System.EventHandler(this.toolStripMenuItemBorrowingCustomers_Click);
             // 
             // toolStripMenuItemBorrowedProducts
             // 
             this.toolStripMenuItemBorrowedProducts.Name = "toolStripMenuItemBorrowedProducts";
-            this.toolStripMenuItemBorrowedProducts.Size = new System.Drawing.Size(123, 20);
+            this.toolStripMenuItemBorrowedProducts.Size = new System.Drawing.Size(153, 24);
             this.toolStripMenuItemBorrowedProducts.Text = "Sản phẩm đã mượn";
             this.toolStripMenuItemBorrowedProducts.Click += new System.EventHandler(this.toolStripMenuItemBorrowedProducts_Click);
             // 
@@ -105,7 +105,7 @@ namespace CD_Management.View
             this.groupBoxDetails.Controls.Add(this.textBoxSearch);
             this.groupBoxDetails.Controls.Add(this.btnExportToExcel);
             this.groupBoxDetails.Controls.Add(this.btnSearch);
-            this.groupBoxDetails.Location = new System.Drawing.Point(12, 437);
+            this.groupBoxDetails.Location = new System.Drawing.Point(12, 454);
             this.groupBoxDetails.Name = "groupBoxDetails";
             this.groupBoxDetails.Size = new System.Drawing.Size(760, 103);
             this.groupBoxDetails.TabIndex = 13;
@@ -117,7 +117,7 @@ namespace CD_Management.View
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(172, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 13);
+            this.label1.Size = new System.Drawing.Size(110, 16);
             this.label1.TabIndex = 15;
             this.label1.Text = "Vui lòng nhập mã";
             // 
@@ -125,7 +125,7 @@ namespace CD_Management.View
             // 
             this.textBoxSearch.Location = new System.Drawing.Point(175, 45);
             this.textBoxSearch.Name = "textBoxSearch";
-            this.textBoxSearch.Size = new System.Drawing.Size(128, 20);
+            this.textBoxSearch.Size = new System.Drawing.Size(128, 22);
             this.textBoxSearch.TabIndex = 14;
             // 
             // btnExportToExcel
