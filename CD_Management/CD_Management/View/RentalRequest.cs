@@ -1,9 +1,7 @@
-﻿using CD_Management.Controller;
+using CD_Management.Controller;
 using CD_Management.Model;
-using CD_Management.View;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
@@ -22,7 +20,7 @@ namespace CD_Management.View
         {
             if (dataGridCD.Columns.Count == 0)
             {
-                dataGridCD.Columns.Add("MaBang", "Mã Bảng");
+                dataGridCD.Columns.Add("MaBang", "Mã Băng");
                 dataGridCD.Columns.Add("SoLuong", "Số Lượng");
                 dataGridCD.Columns.Add("DonGia", "Đơn Giá");
                 dataGridCD.Columns.Add("Coc", "Phần trăm cọc");
@@ -120,7 +118,7 @@ namespace CD_Management.View
 
             var rentalRequestController = new RentalRequestController();
             var detailRentalRequestController = new DetailRentalRequestController();
-            using (var connection = new SqlConnection("Data Source=DESKTOP-GF6DKHM;Initial Catalog=CD_Management;Integrated Security=True;TrustServerCertificate=True"))
+            using (var connection = new SqlConnection("Data Source=DESKTOP-08N8TNO\\SQLEXPRESS;Initial Catalog=CD_Management;Integrated Security=True;TrustServerCertificate=True"))
             {
                 connection.Open();
                 using (var transaction = connection.BeginTransaction())
@@ -157,7 +155,7 @@ namespace CD_Management.View
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
             LoadBangComboBox();
             LoadCustomerComboBox();
             dateNgayTra.Value = DateTime.Now.AddDays(14);
@@ -170,9 +168,9 @@ namespace CD_Management.View
         }
         private void TinhTienCoc()
         {
-            if (int.TryParse(txtSoLuong.Text, out int soLuong) && float.TryParse(txtCoc.Text, out float phanTramCoc)&& int.TryParse(txtDonGia.Text, out int dongia))
+            if (int.TryParse(txtSoLuong.Text, out int soLuong) && float.TryParse(txtCoc.Text, out float phanTramCoc) && int.TryParse(txtDonGia.Text, out int dongia))
             {
-                float tienCoc = soLuong * dongia * phanTramCoc/100;
+                float tienCoc = soLuong * dongia * phanTramCoc / 100;
                 txtTienCoc.Text = tienCoc.ToString("0.00");
             }
             else
@@ -185,23 +183,36 @@ namespace CD_Management.View
         private void txtSoLuong_TextChanged(object sender, EventArgs e)
         {
             TinhTienCoc();
-            if (int.TryParse(txtSoLuong.Text, out int soLuongNhap) && ccbMaBang.SelectedItem != null)
+
+            if (int.TryParse(txtSoLuong.Text, out int soLuongNhap))
             {
-                string selectedMaBang = ccbMaBang.SelectedItem.ToString();
-
-                int availableQuantity = cdController.GetAvailableQuantity(selectedMaBang);
-
-                if (soLuongNhap > availableQuantity)
+                if (soLuongNhap <= 0)
                 {
-                    MessageBox.Show("Số lượng nhập vượt quá số lượng có sẵn trong kho.");
-                    txtSoLuong.Text = availableQuantity.ToString();
+                    MessageBox.Show("Số lượng phải lớn hơn 0.");
+                    txtSoLuong.Text = ""; // Xóa giá trị không hợp lệ
+                    return; // Kết thúc xử lý
+                }
+
+                if (ccbMaBang.SelectedItem != null)
+                {
+                    string selectedMaBang = ccbMaBang.SelectedItem.ToString();
+
+                    int availableQuantity = cdController.GetAvailableQuantity(selectedMaBang);
+
+                    if (soLuongNhap > availableQuantity)
+                    {
+                        MessageBox.Show("Số lượng nhập vượt quá số lượng có sẵn trong kho.");
+                        txtSoLuong.Text = availableQuantity.ToString();
+                    }
                 }
             }
             else if (txtSoLuong.Text != "")
             {
                 MessageBox.Show("Vui lòng nhập số lượng hợp lệ.");
+                txtSoLuong.Text = ""; // Xóa giá trị không hợp lệ
             }
         }
+
 
         private void txtCoc_TextChanged(object sender, EventArgs e)
         {
@@ -217,7 +228,7 @@ namespace CD_Management.View
                 ccbMaBang.Items.Add(maBang);
             }
         }
-        
+
 
         private void ccbMaBang_SelectedIndexChanged_1(object sender, EventArgs e)
         {
@@ -237,7 +248,7 @@ namespace CD_Management.View
                 txtTacGia.Text = bang.TacGia;
                 // Các trường khác nếu có thể tính toán
                 txtCoc.Text = "30";
-                txtTienCoc.Text = ""; 
+                txtTienCoc.Text = "";
             }
             else
             {
@@ -254,7 +265,7 @@ namespace CD_Management.View
                 ccbIdKH.Items.Add(customer.MaKhach);
             }
         }
-        
+
 
         private void ccbIdKH_SelectedIndexChanged_1(object sender, EventArgs e)
         {
