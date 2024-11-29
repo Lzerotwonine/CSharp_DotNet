@@ -1,4 +1,4 @@
-﻿using CD_Management.Model;
+using CD_Management.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
