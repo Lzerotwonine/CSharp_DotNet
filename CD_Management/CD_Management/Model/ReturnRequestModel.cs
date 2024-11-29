@@ -8,16 +8,16 @@ namespace CD_Management.Model
         public string MaHDTra { get; set; }
         public string MaHDMuon { get; set; }
         public DateTime NgayTraHang { get; set; }
-        public float TongTienTra { get; set; }
+        public float TongTien { get; set; }
         public ReturnRequestModel() { }
 
         // Constructor với tham số
-        public ReturnRequestModel(string maHDTra, string maHDMuon, DateTime ngayTraHang, float tongTienTra)
+        public ReturnRequestModel(string maHDTra, string maHDMuon, DateTime ngayTraHang, float tongTien)
         {
             MaHDTra = maHDTra;
             MaHDMuon = maHDMuon;
             NgayTraHang = ngayTraHang;
-            TongTienTra = tongTienTra;
+            TongTien = tongTien;
         }
 
         public bool isValidate()
