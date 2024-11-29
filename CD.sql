@@ -1,8 +1,8 @@
 ---- Tạo cơ sở dữ liệu CD_Management
---CREATE DATABASE CD_Management;
---GO
---USE CD_Management;
---GO
+CREATE DATABASE CD_Management;
+GO
+USE CD_Management;
+GO
 
 -- Tạo bảng Account
 CREATE TABLE Account (
