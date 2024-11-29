@@ -125,13 +125,14 @@ namespace CD_Management.View
         }
 
         // Nút tìm kiếm băng
+        // Nút tìm kiếm băng
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             string maBang = textBoxMaBang.Text;
             string tenBang = textBoxTenBang.Text;
             string tacGia = textBoxTacGia.Text;
             string theLoai = textBoxTheLoai.Text;
-        
+
             // Gọi phương thức tìm kiếm
             List<IModel> result = bangController.Search(
                 string.IsNullOrEmpty(maBang) ? null : maBang,
@@ -139,13 +140,14 @@ namespace CD_Management.View
                 string.IsNullOrEmpty(tacGia) ? null : tacGia,
                 string.IsNullOrEmpty(theLoai) ? null : theLoai
             );
-        
+
             // Ép kiểu từ IModel sang CDModel
             var cdResults = result.Cast<CDModel>().ToList();
-        
+
             // Gán lại DataSource cho DataGridView
             dataGridViewCD.DataSource = cdResults;
         }
+
 
         // Nút xóa dữ liệu nhập trên các TextBox
         private void buttonClear_Click(object sender, EventArgs e)
@@ -157,7 +159,6 @@ namespace CD_Management.View
             textBoxDonGiaBan.Clear();
             textBoxTheLoai.Clear();
             textBoxTacGia.Clear();
-
             LoadBangFromDatabase();
         }
 

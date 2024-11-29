@@ -1,4 +1,4 @@
-using CD_Management.Controller;
+﻿using CD_Management.Controller;
 using CD_Management.Model;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,9 @@ namespace CD_Management.Controller
 {
     internal class RentalRequestController : IController
     {
-        private readonly string connectionString = "Data Source=DESKTOP-GF6DKHM;Initial Catalog=CD_Management;Integrated Security=True";
+        private readonly string connectionString = "Data Source=THIEN\\SQLEXPRESS;Initial Catalog=CD_Management;Integrated Security=True";
+        //private readonly string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["CD_Management.Properties.Settings.CD_ManagementConnectionString"].ConnectionString;
+
         public List<IModel> Items { get; private set; }
 
         public RentalRequestController()
@@ -203,18 +205,18 @@ namespace CD_Management.Controller
         public List<string> GetAllMaPhieuMuon()
         {
             var maPhieuMuonList = new List<string>();
-            string query = "SELECT MaHDMuon FROM PhieuMuon WHERE HoatDong = 0";  
+            string query = "SELECT MaHDMuon FROM PhieuMuon WHERE HoatDong = 0";
 
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand(query, connection))
             {
                 try
                 {
-                    connection.Open(); 
+                    connection.Open();
 
-                    using (var reader = command.ExecuteReader()) 
+                    using (var reader = command.ExecuteReader())
                     {
-                        while (reader.Read()) 
+                        while (reader.Read())
                         {
                             // Thêm mã phiếu mượn vào danh sách
                             maPhieuMuonList.Add(reader["MaHDMuon"].ToString());
@@ -228,7 +230,7 @@ namespace CD_Management.Controller
                 }
             }
 
-            return maPhieuMuonList; 
+            return maPhieuMuonList;
         }
 
     }

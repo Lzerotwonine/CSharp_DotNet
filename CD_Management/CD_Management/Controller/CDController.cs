@@ -8,7 +8,9 @@ namespace CD_Management.Controller
 {
     public class CDController : IController
     {
-        private readonly string connectionString = "Data Source=DESKTOP-GF6DKHM;Initial Catalog=CD_Management;Integrated Security=True;TrustServerCertificate=True";
+        private readonly string connectionString = "Data Source=THIEN\\SQLEXPRESS;Initial Catalog=CD_Management;Integrated Security=True;TrustServerCertificate=True";
+        //private readonly string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["CD_Management.Properties.Settings.CD_ManagementConnectionString"].ConnectionString;
+
         private CDDataContext db; // LINQ DataContext
         private List<IModel> items;
 
@@ -20,11 +22,11 @@ namespace CD_Management.Controller
             db = new CDDataContext(); // Khởi tạo DataContext
         }
 
-        // Tìm kiếm băng theo tên, tác giả, thể loại
+        // Tìm kiếm băng theo mã, tên, tác giả, thể loại
         public List<IModel> Search(string maBang = null, string tenBang = null, string tacGia = null, string theLoai = null)
         {
             var query = db.Bangs.AsQueryable();
-        
+
             if (!string.IsNullOrEmpty(maBang))
                 query = query.Where(b => b.MaBang.Contains(maBang));
             if (!string.IsNullOrEmpty(tenBang))
@@ -33,7 +35,7 @@ namespace CD_Management.Controller
                 query = query.Where(b => b.TacGia.Contains(tacGia));
             if (!string.IsNullOrEmpty(theLoai))
                 query = query.Where(b => b.TheLoai.Contains(theLoai));
-        
+
             return query.Select(b => new CDModel
             {
                 MaBang = b.MaBang,
@@ -44,6 +46,7 @@ namespace CD_Management.Controller
                 TacGia = b.TacGia
             }).Cast<IModel>().ToList();
         }
+
 
         // Thêm mới Băng
         public bool Create(IModel model)

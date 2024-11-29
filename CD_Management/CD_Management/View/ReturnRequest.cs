@@ -1,7 +1,14 @@
-using CD_Management.Controller;
+﻿using CD_Management.Controller;
 using CD_Management.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Configuration;
 using System.Windows.Forms;
 
 namespace CD_Management.View
@@ -33,7 +40,7 @@ namespace CD_Management.View
 
         private void LoadPMComboBox()
         {
-            //var rentalRequestController = new RentalRequestController();
+            var rentalRequestController = new RentalRequestController();
             List<string> maPhieuMuonList = rentalRequestController.GetAllMaPhieuMuon();
 
 
@@ -133,8 +140,8 @@ namespace CD_Management.View
                 if (updateSuccess)
                 {
                     MessageBox.Show("Phiếu trả đã được lưu thành công và trạng thái phiếu mượn đã được cập nhật.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //LoadPMComboBox();
                     ClearForm();
-
                 }
                 else
                 {
@@ -151,11 +158,19 @@ namespace CD_Management.View
         }
         private void ClearForm()
         {
-
-            txtMaPT.Text = "";
-            cbbPM.Text = "";
+            txtMaPT.Clear();
+            cbbPM.SelectedIndex = -1; // Bỏ chọn mục đang được chọn
             LoadPMComboBox();
+        }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
     }

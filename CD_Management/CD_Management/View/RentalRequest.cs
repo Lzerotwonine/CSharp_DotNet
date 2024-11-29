@@ -118,7 +118,8 @@ namespace CD_Management.View
 
             var rentalRequestController = new RentalRequestController();
             var detailRentalRequestController = new DetailRentalRequestController();
-            using (var connection = new SqlConnection("Data Source=DESKTOP-08N8TNO\\SQLEXPRESS;Initial Catalog=CD_Management;Integrated Security=True;TrustServerCertificate=True"))
+            //"System.Configuration.ConfigurationManager.ConnectionStrings[\"CD_Management.Properties.Settings.CD_ManagementConnectionString\"].ConnectionString"  
+            using (var connection = new SqlConnection("Data Source=THIEN\\SQLEXPRESS;Initial Catalog=CD_Management;Integrated Security=True"))
             {
                 connection.Open();
                 using (var transaction = connection.BeginTransaction())
@@ -391,6 +392,16 @@ namespace CD_Management.View
         private void buttonClear_Click(object sender, EventArgs e)
         {
             ClearForm();
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }

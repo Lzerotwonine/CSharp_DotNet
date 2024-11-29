@@ -154,10 +154,10 @@ namespace CD_Management.View
         {
             string maNCC = textBoxMaNCC.Text.Trim();
             string tenNCC = textBoxTenNCC.Text.Trim();
-        
+
             // Gọi phương thức Search để tìm kiếm
             var result = supplierController.Search(maNCC, tenNCC);
-        
+
             if (result != null && result.Count > 0)
             {
                 // Cập nhật DataGridView với kết quả
@@ -167,11 +167,12 @@ namespace CD_Management.View
             {
                 // Thông báo nếu không có kết quả tìm kiếm
                 MessageBox.Show("Không tìm thấy nhà cung cấp nào phù hợp.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        
+
                 // Đặt lại DataGridView về danh sách ban đầu (tất cả nhà cung cấp)
                 LoadSuppliersFromDatabase();
             }
         }
+
 
         // Xóa các trường văn bản
         private void buttonClear_Click(object sender, EventArgs e)
@@ -180,8 +181,6 @@ namespace CD_Management.View
             textBoxTenNCC.Clear();
             textBoxDiaChi.Clear();
             textBoxSoDienThoai.Clear();
-
-            LoadSuppliersFromDatabase();
         }
 
         // Hiển thị thông tin nhà cung cấp khi chọn trong DataGridView

@@ -1,161 +1,120 @@
-using CD_Management.Controller;
-using CD_Management.Model;
+﻿using CD_Management.Model;
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace CD_Management.View
+namespace CD_Management.Controller
 {
-    public partial class ReturnRequest : Form
+    internal class ReturnRequestController : IController
     {
-        RentalRequestController rentalRequestController = new RentalRequestController();
-        public ReturnRequest()
-        {
-            InitializeComponent();
-            LoadPMComboBox();
-            ConfigureDataGridView();
-        }
-        private void ConfigureDataGridView()
-        {
-            // Xóa các cột hiện tại trong DataGridView (nếu có)
-            dataGridReturn.Columns.Clear();
+        private string connectionString = "Data Source=THIEN\\SQLEXPRESS;Initial Catalog=CD_Management;Integrated Security=True"; // Cập nhật kết nối cơ sở dữ liệu
+        //private readonly string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["CD_Management.Properties.Settings.CD_ManagementConnectionString"].ConnectionString;
 
-            // Thêm cột vào DataGridView
-            dataGridReturn.Columns.Add("MaKhach", "Mã Khách");
-            dataGridReturn.Columns.Add("NgayMuon", "Ngày Mượn");
-            dataGridReturn.Columns.Add("NgayTra", "Hạn Ngày Trả");
-            dataGridReturn.Columns.Add("TienCoc", "Tiền Cọc");
-            /*dataGridReturn.Columns.Add("HoatDong", "Hoạt Động");*/
-            dataGridReturn.Columns.Add("TienTra", "Tiền Trả");
+        public List<IModel> Items { get; private set; }
+
+        public ReturnRequestController()
+        {
+            Items = new List<IModel>();
+            Load(); // Load tất cả các phiếu trả khi khởi tạo controller
         }
 
-
-
-        private void LoadPMComboBox()
+        public bool Create(IModel model)
         {
-            //var rentalRequestController = new RentalRequestController();
-            List<string> maPhieuMuonList = rentalRequestController.GetAllMaPhieuMuon();
-
-
-            cbbPM.Items.Clear();
-            foreach (var maPhieu in maPhieuMuonList)
+            if (model is ReturnRequestModel returnRequest)
             {
-                cbbPM.Items.Add(maPhieu);
-            }
-        }
+                string query = "INSERT INTO PhieuTra (MaHDTra, MaHDMuon, NgayTraHang, TongTien) " +
+                               "VALUES (@MaHDTra, @MaHDMuon, @NgayTraHang, @TongTien)";
 
-        private void cbbPM_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string selectedMaHDMuon = cbbPM.SelectedItem?.ToString();
-
-            if (string.IsNullOrWhiteSpace(selectedMaHDMuon))
-            {
-                MessageBox.Show("Vui lòng chọn một mã hóa đơn hợp lệ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            RentalRequestModel rentalRequest = rentalRequestController.GetRentalRequestByMaHDMuon(selectedMaHDMuon);
-
-            if (rentalRequest != null)
-            {
-                dataGridReturn.Rows.Clear();
-
-                // Thêm một dòng vào DataGridView
-                dataGridReturn.Rows.Add(
-                    rentalRequest.MaKhach,
-                    rentalRequest.NgayMuon.ToString("dd/MM/yyyy"),
-                    rentalRequest.NgayTra.ToString("dd/MM/yyyy"),
-                    rentalRequest.TienCoc.ToString("N2"),
-                    /*rentalRequest.HoatDong ? "Hoạt động" : "Không hoạt động",*/
-                    rentalRequest.TienTra.HasValue ? rentalRequest.TienTra.Value.ToString("N2") : "Không cần trả tiền");
-            }
-            else
-            {
-                MessageBox.Show("Không tìm thấy thông tin chi tiết cho mã hóa đơn mượn được chọn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            string maHDTra = txtMaPT.Text.Trim();
-            string maHDMuon = cbbPM.Text.Trim();
-            DateTime ngayTraHang = DateTime.Now;
-            float tongTien = 0;
-            if (dataGridReturn.SelectedRows.Count > 0)
-            {
-                var selectedRow = dataGridReturn.SelectedRows[0];
-                if (selectedRow.Cells["TienTra"].Value != null &&
-                    float.TryParse(selectedRow.Cells["TienTra"].Value.ToString(), out tongTien))
+                using (var connection = new SqlConnection(connectionString))
                 {
-                }
-                else
-                {
-                    MessageBox.Show("Số tiền trả không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    connection.Open();
+                    using (var command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@MaHDTra", returnRequest.MaHDTra);
+                        command.Parameters.AddWithValue("@MaHDMuon", returnRequest.MaHDMuon);
+                        command.Parameters.AddWithValue("@NgayTraHang", returnRequest.NgayTraHang);
+                        command.Parameters.AddWithValue("@TongTien", returnRequest.TongTien);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+                        return rowsAffected > 0; // Trả về true nếu thành công
+                    }
                 }
             }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn một dòng trong DataGridView.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(maHDTra) || string.IsNullOrWhiteSpace(maHDMuon))
-            {
-                MessageBox.Show("Vui lòng điền đầy đủ thông tin mã phiếu trả và mã hóa đơn mượn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            var returnRequest = new ReturnRequestModel
-            {
-                MaHDTra = maHDTra,
-                MaHDMuon = maHDMuon,
-                NgayTraHang = ngayTraHang,
-                TongTien = tongTien
-            };
-
-            var returnRequestController = new ReturnRequestController();
-            if (returnRequestController.IsExist(maHDTra))
-            {
-                MessageBox.Show("Mã phiếu trả đã tồn tại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            bool success = returnRequestController.Create(returnRequest);
-
-            if (success)
-            {
-                var rentalRequestController = new RentalRequestController();
-                var rentalRequest = new RentalRequestModel
-                {
-                    MaHDMuon = maHDMuon,
-                    HoatDong = true
-                };
-
-                bool updateSuccess = rentalRequestController.Update(rentalRequest);
-
-                if (updateSuccess)
-                {
-                    MessageBox.Show("Phiếu trả đã được lưu thành công và trạng thái phiếu mượn đã được cập nhật.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ClearForm();
-
-                }
-                else
-                {
-                    MessageBox.Show("Có lỗi xảy ra khi cập nhật trạng thái phiếu mượn.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-                // Làm sạch form
-
-            }
-            else
-            {
-                MessageBox.Show("Có lỗi xảy ra khi lưu phiếu trả. Vui lòng thử lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            return false;
         }
-        
-        private void ClearForm()
-        {
 
-            txtMaPT.Text = "";
-            cbbPM.Text = "";
-            LoadPMComboBox();
+        public bool Delete(object id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsExist(object id)
+        {
+            string query = "SELECT COUNT(1) FROM PhieuTra WHERE MaHDTra = @MaHDTra";
+            bool exists = false;
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@MaHDTra", id);
+                    exists = Convert.ToInt32(command.ExecuteScalar()) > 0;
+                }
+            }
+            return exists;
+        }
+
+        public bool IsExist(IModel model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Load()
+        {
+            Items.Clear();
+            string query = "SELECT MaHDTra, MaHDMuon, NgayTraHang, TongTien FROM PhieuTra";
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (var command = new SqlCommand(query, connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var returnRequest = new ReturnRequestModel
+                            {
+                                MaHDTra = reader["MaHDTra"].ToString(),
+                                MaHDMuon = reader["MaHDMuon"].ToString(),
+                                NgayTraHang = Convert.ToDateTime(reader["NgayTraHang"]),
+                                TongTien = Convert.ToSingle(reader["TongTien"])
+                            };
+                            Items.Add(returnRequest);
+                        }
+                    }
+                }
+            }
+            return Items.Count > 0;
+        }
+
+        public bool Load(object id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IModel Read(object id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Update(IModel model)
+        {
+            throw new NotImplementedException();
         }
     }
 }

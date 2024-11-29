@@ -10,7 +10,9 @@ namespace CD_Management.Controller
 {
     internal class DetailRentalRequestController : IController
     {
-        private readonly string connectionString = "Data Source=DESKTOP-GF6DKHM;Initial Catalog=CD_Management;Integrated Security=True;TrustServerCertificate=True";
+        private readonly string connectionString = "Data Source=THIEN\\SQLEXPRESS;Initial Catalog=CD_Management;Integrated Security=True;TrustServerCertificate=True";
+        //private readonly string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["CD_Management.Properties.Settings.CD_ManagementConnectionString"].ConnectionString;
+
         public List<IModel> Items { get; private set; }
 
         public DetailRentalRequestController()

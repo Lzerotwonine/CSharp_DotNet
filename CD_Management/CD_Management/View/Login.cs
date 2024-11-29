@@ -1,6 +1,8 @@
-﻿using System;
+﻿using CD_Management.Controller;
+using CD_Management.Model;
+using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using CD_Management.Controller;
 
 namespace CD_Management.View
 {
@@ -41,22 +43,67 @@ namespace CD_Management.View
                 return;
             }
 
-            if (loginController.Authenticate(id, password))
-            {
-                // Đăng nhập thành công, lấy thông tin user
-                var account = loginController.GetAccountById(id);
-                AuthenticatedUserId = account.Id;
-                AuthenticatedUserRole = account.Role;
-                IsAuthenticated = true;
+            // Tạo và hiển thị LoadingForm
+            LoadingForm loadingForm = new LoadingForm();
+            loadingForm.Show();
 
-                MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close(); // Đóng form đăng nhập
-            }
-            else
+            // Lấy thời gian bắt đầu hiển thị form Loading
+            var startTime = DateTime.Now;
+
+            // Xử lý đăng nhập trong Task
+            Task.Run(() =>
             {
-                MessageBox.Show("ID hoặc mật khẩu không đúng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                bool isAuthenticated = false;
+                string errorMessage = "";
+                var account = default(AccountModel);
+
+                try
+                {
+                    if (loginController.Authenticate(id, password))
+                    {
+                        isAuthenticated = true;
+                        account = loginController.GetAccountById(id);
+                    }
+                    else
+                    {
+                        errorMessage = "ID hoặc mật khẩu không đúng!";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    errorMessage = $"Lỗi xảy ra khi đăng nhập: {ex.Message}";
+                }
+
+                // Đảm bảo form Loading hiển thị ít nhất 1 giây
+                var elapsedTime = (DateTime.Now - startTime).TotalMilliseconds;
+                if (elapsedTime < 1000)
+                {
+                    Task.Delay(1000 - (int)elapsedTime).Wait();
+                }
+
+                // Đóng form Loading trên luồng chính
+                this.Invoke(new Action(() => loadingForm.Close()));
+
+                // Hiển thị kết quả trên luồng chính
+                this.Invoke(new Action(() =>
+                {
+                    if (isAuthenticated)
+                    {
+                        AuthenticatedUserId = account.Id;
+                        AuthenticatedUserRole = account.Role;
+                        IsAuthenticated = true;
+
+                        MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close(); // Đóng form đăng nhập
+                    }
+                    else
+                    {
+                        MessageBox.Show(errorMessage, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }));
+            });
         }
+
 
         // Các phương thức còn lại không thay đổi
         private void buttonExit_Click(object sender, EventArgs e)
