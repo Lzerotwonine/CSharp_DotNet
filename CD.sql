@@ -102,7 +102,7 @@ INSERT INTO Khach (MaKhach, TenKhach, DienThoai, DiaChi) VALUES
     ('PM004', '2023-10-15', '2023-10-30', 'KH004', 130000, 390000, 1),
     ('PM005', '2023-10-20', '2023-11-05', 'KH005', 90000, 270000, 1);
 
-INSERT INTO PhieuTra (MaHDTra, MaHDMuon, NgayTraHang, GhiChu, TongTienTra, SoTienPhat) VALUES 
+INSERT INTO PhieuTra (MaHDTra, MaHDMuon, NgayTraHang, GhiChu, TongTien, SoTienPhat) VALUES 
     ('PT001', 'PM001', '2023-10-15', N'Hoàn thành', 300000, 0),
     ('PT002', 'PM002', '2023-10-20', N'Hoàn thành', 450000, 0),
     ('PT003', 'PM003', '2023-10-25', N'Hoàn thành', 360000, 0),
