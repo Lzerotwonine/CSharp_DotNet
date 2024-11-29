@@ -189,8 +189,8 @@ namespace CD_Management.View
                 if (soLuongNhap <= 0)
                 {
                     MessageBox.Show("Số lượng phải lớn hơn 0.");
-                    txtSoLuong.Text = ""; // Xóa giá trị không hợp lệ
-                    return; // Kết thúc xử lý
+                    txtSoLuong.Text = ""; 
+                    return;
                 }
 
                 if (ccbMaBang.SelectedItem != null)
