@@ -1,4 +1,4 @@
-﻿using CD_Management.Controller;
+using CD_Management.Controller;
 using CD_Management.Model;
 using System;
 using System.Data;
@@ -209,6 +209,30 @@ namespace CD_Management.View
             dateTimePickerTransactionDate.Value = DateTime.Now; // Ngày giao dịch về ngày hiện tại
             rbtnImport.Checked = false; // Bỏ chọn cả hai loại giao dịch
             rbtnExport.Checked = false;
+
+            LoadTransactionsFromDatabase();
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            string id = textBoxTransactionId.Text.Trim();
+            string itemId = textBoxItemId.Text.Trim();
+            string transactionType = rbtnImport.Checked ? "Nhập" : rbtnExport.Checked ? "Xuất" : "";
+            string supplierId = textBoxSupplierId.Text.Trim();
+
+            // Gọi phương thức tìm kiếm từ Controller
+            var results = warehouseController.Search(id, itemId, transactionType, supplierId);
+
+            if (results != null && results.Count > 0)
+            {
+                // Hiển thị kết quả tìm kiếm
+                dataGridViewWarehouse.DataSource = results.Cast<WarehouseModel>().ToList();
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy giao dịch nào phù hợp.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadTransactionsFromDatabase(); // Tải lại tất cả giao dịch nếu không tìm thấy
+            }
         }
 
         private void ConfirmDelete()
