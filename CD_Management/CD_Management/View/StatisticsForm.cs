@@ -313,6 +313,27 @@ namespace CD_Management.View
 
         private int currentSearchIndex = -1; // Chỉ số hiện tại khi tìm kiếm
 
+        private List<string> GetSearchableFields()
+        {
+            if (currentStatisticType == "ProductsInStock")
+            {
+                return new List<string> { "Key", "Name" }; // Mã Băng, Tên Băng
+            }
+            else if (currentStatisticType == "OverdueReceipts")
+            {
+                return new List<string> { "Key", "CustomerID" }; // Mã Phiếu, Mã Khách
+            }
+            else if (currentStatisticType == "BorrowingCustomers")
+            {
+                return new List<string> { "Key", "ReceiptID" }; // Mã Khách, Mã Phiếu Mượn
+            }
+            else if (currentStatisticType == "BorrowedProducts")
+            {
+                return new List<string> { "ReceiptID", "Key", "Name" }; // Mã Phiếu, Mã Băng, Tên Băng
+            }
+            return new List<string>(); // Không hỗ trợ loại thống kê khác
+        }
+        
         private void btnSearch_Click(object sender, EventArgs e)
         {
             var searchTerm = textBoxSearch.Text.Trim(); // Lấy giá trị từ TextBox tìm kiếm
@@ -321,22 +342,36 @@ namespace CD_Management.View
                 MessageBox.Show("Vui lòng nhập từ khóa tìm kiếm.");
                 return;
             }
-
-            // Tìm tất cả các dòng có giá trị tương ứng
+        
+            var searchableFields = GetSearchableFields();
+            if (!searchableFields.Any())
+            {
+                MessageBox.Show("Loại thống kê hiện tại không hỗ trợ tìm kiếm.");
+                return;
+            }
+        
             var matchingRows = dataGridViewStatistics.Rows.Cast<DataGridViewRow>()
-                .Where(r => ((StatisticsModel)r.DataBoundItem).Key.Contains(searchTerm)) // Tìm các phần tử có chứa từ khóa
+                .Where(row =>
+                {
+                    var dataItem = (StatisticsModel)row.DataBoundItem;
+                    return searchableFields.Any(field =>
+                    {
+                        var propertyValue = dataItem.GetType().GetProperty(field)?.GetValue(dataItem, null)?.ToString();
+                        return !string.IsNullOrEmpty(propertyValue) && propertyValue.IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0;
+                    });
+                })
                 .ToList();
-
+        
             if (matchingRows.Any())
             {
                 // Nếu có kết quả tìm thấy, di chuyển đến phần tử tiếp theo
                 currentSearchIndex = (currentSearchIndex + 1) % matchingRows.Count; // Chuyển sang phần tử tiếp theo
-
+        
                 var selectedRow = matchingRows[currentSearchIndex];
                 dataGridViewStatistics.ClearSelection();
                 selectedRow.Selected = true;
                 dataGridViewStatistics.FirstDisplayedScrollingRowIndex = selectedRow.Index; // Cuộn đến dòng đã chọn
-
+        
                 //MessageBox.Show($"Đã tìm thấy: {((StatisticsModel)selectedRow.DataBoundItem).Key}");
             }
             else
@@ -344,9 +379,6 @@ namespace CD_Management.View
                 MessageBox.Show("Không tìm thấy kết quả.");
             }
         }
-
-
-
 
         private void btnExportToExcel_Click(object sender, EventArgs e)
         {
