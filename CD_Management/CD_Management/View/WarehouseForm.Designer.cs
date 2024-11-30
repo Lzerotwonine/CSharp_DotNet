@@ -1,4 +1,4 @@
-﻿namespace CD_Management.View
+namespace CD_Management.View
 {
     partial class WarehouseForm
     {
@@ -111,6 +111,7 @@
             this.buttonSearch.TabIndex = 14;
             this.buttonSearch.Text = "Tìm kiếm";
             this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // buttonDelete
             // 
