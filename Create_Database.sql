@@ -82,7 +82,7 @@ CREATE TABLE QuanLyKho (
 );
 
 INSERT INTO Account (Id, Name, Password, Role) VALUES
-('002', 'Nhom16', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'admin');
+('001', 'Nhom16', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'admin');
 
 INSERT INTO Bang (MaBang, TenBang, SoLuong, DonGiaBan, TheLoai, TacGia) VALUES 
     ('BD001', N'Bên Trên Tầng Lầu', 50, 50000, N'Nhạc Trẻ', N'Tăng Duy Tân'),
